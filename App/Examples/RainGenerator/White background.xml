@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Whitebackground>
+		<Standard>
+			<Stroke>0.4375</Stroke>
+			<Iterations>450</Iterations>
+			<Colorful>false</Colorful>
+			<Basecolor>#c8c8c8</Basecolor>
+			<Backgroundcolor>#ffffff</Backgroundcolor>
+		</Standard>
+		<Specific>
+			<yspacing>25.095000000000002</yspacing>
+			<xspacing>28.219375</xspacing>
+			<Raindroplength>25.095000000000002</Raindroplength>
+			<Angle>0</Angle>
+		</Specific>
+	</Whitebackground>
+</config>

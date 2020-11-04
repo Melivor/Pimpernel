@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Treeoflife>
+		<Transformations>
+			<Scale>37.5</Scale>
+			<Rotationnumber>9</Rotationnumber>
+			<Angle>81</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1.0625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#cc8486</Basecolor>
+			<Backgroundcolor>#3d3939</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-3</Startt>
+			<Showequation>true</Showequation>
+			<P2>15</P2>
+			<P1>7.32</P1>
+			<Equation>1</Equation>
+			<Endt>3</Endt>
+		</Functionparameters>
+	</Treeoflife>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Hexa>
+		<Startvalue>
+			<Startpositiony>0</Startpositiony>
+			<Startpositionx>200</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0</Stroke>
+			<Iterations>63</Iterations>
+			<Colorful>false</Colorful>
+			<Basecolor>#5d5d5d</Basecolor>
+			<Backgroundcolor>#ffffff</Backgroundcolor>
+		</Standard>
+		<Specific>
+			<Spacing>1.095</Spacing>
+			<Radius>59.456250000000004</Radius>
+			<Opacity>11</Opacity>
+			<Edgenumber>6</Edgenumber>
+			<Angle>1.3744467859455345</Angle>
+		</Specific>
+	</Hexa>
+</config>

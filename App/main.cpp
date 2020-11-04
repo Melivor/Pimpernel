@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setOrganizationName("2ms");
     app.setOrganizationDomain("2ms.tech");
+
 //    MetaLinePainter line;
 //    QList<QObject*> painterList= {
 //        new MetaLinePainter(),
@@ -26,7 +27,6 @@ int main(int argc, char *argv[])
         QList<QObject*> painterList= {
             new MetaRainGenerator(),
             new MetaParametricEquationsShapeGenerator(),
-
             new MetaCurveLineGenerator(),
             new MetaPolygonGenerator(),
         };

@@ -48,7 +48,6 @@ void PolygonPainter2::paint(QPainter *painter, double width, double height)
         }
         ++i;
         int j=rand()%(nextSpot.size());
-        qDebug()<<"j: "<<j<<" /"<<nextSpot.size();
 
         center=nextSpot[j];
         nextSpot.removeAt(j);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<RainGenerator>
+		<Standard>
+			<yspacing>20</yspacing>
+			<xspacing>20</xspacing>
+			<Stroke>0</Stroke>
+			<Raindroplength>5</Raindroplength>
+			<Iterations>450</Iterations>
+			<Colorful>true</Colorful>
+			<Basecolor>#e4e4fd</Basecolor>
+			<Backgroundcolor>#242424</Backgroundcolor>
+			<Angle>20</Angle>
+		</Standard>
+		<Specific>
+			<yspacing>25.095000000000002</yspacing>
+			<xspacing>0.1</xspacing>
+			<Raindroplength>0.1</Raindroplength>
+			<Angle>0</Angle>
+		</Specific>
+	</RainGenerator>
+</config>

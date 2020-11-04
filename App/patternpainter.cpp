@@ -16,7 +16,6 @@ void PatternPainter::paint(QPainter *painter)
 
 void PatternPainter::saveAsPng(QUrl url)
 {
-    qDebug()<<"Save started "<<url.toLocalFile();
 
     QImage image(1920, 1080, QImage::Format_RGB32);
     image.fill(QColor("white"));

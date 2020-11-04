@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Beetle>
+		<Transformations>
+			<Scale>43.75</Scale>
+			<Rotationnumber>3</Rotationnumber>
+			<Angle>49.50000000000001</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.5625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#c7c7c7</Basecolor>
+			<Backgroundcolor>#302d29</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-6.2</Startt>
+			<Showequation>true</Showequation>
+			<P2>-50.01</P2>
+			<P1>10.01</P1>
+			<Equation>0</Equation>
+			<Endt>6.2</Endt>
+		</Functionparameters>
+	</Beetle>
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Lion>
+		<Transformations>
+			<Scale>32.5</Scale>
+			<Rotationnumber>4</Rotationnumber>
+			<Angle>112.5</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.5625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#d6d4e7</Basecolor>
+			<Backgroundcolor>#514e4c</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-10</Startt>
+			<Showequation>true</Showequation>
+			<P2>15</P2>
+			<P1>14.98</P1>
+			<Equation>4</Equation>
+			<Endt>10</Endt>
+		</Functionparameters>
+	</Lion>
+</config>

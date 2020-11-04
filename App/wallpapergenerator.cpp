@@ -1,10 +1,19 @@
 #include "wallpapergenerator.h"
 #include <QImageWriter>
 #include <QPainter>
+#include <QDir>
 
 WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* prototype, QObject* parent):StandardItemModelExplorer(prototype, parent)
 {
-
+    QDir dir(":/Examples/"+activeModel()->root());
+    QStringList strList=dir.entryList();
+    for(auto str:strList){
+        if(!QFile::exists(path()+str)){
+            QFile::copy(dir.path()+"/"+str,path()+str);
+        }
+    }
+    getModelList();
+    setActiveSelection(activeModel()->root());
 }
 
 
@@ -46,7 +55,6 @@ void WallpaperGenerator::save(const QString& name)
 }
 void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
 {
-    qDebug()<<"Save started "<<url.toLocalFile()<<" widthxheight:"<<width<<"x"<<height;
 
     QImage image(width, height, QImage::Format_RGB32);
     image.fill(QColor(m_settings->backgroundColor()));
@@ -54,7 +62,6 @@ void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
     painter.begin(&image);
     double scale=std::min(image.width()/this->width(), image.height()/this->height());
     //double scale=width/this->width();
-    qDebug()<<"Scale: "<<scale;
     painter.scale(scale, scale);
     paint(&painter, image.width()/scale, image.height()/scale);
     painter.end();

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Enigma2>
+		<Transformations>
+			<Scale>31.874999999999996</Scale>
+			<Rotationnumber>2</Rotationnumber>
+			<Angle>45</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1.125</Stroke>
+			<Ptnumber>20000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#9195a8</Basecolor>
+			<Backgroundcolor>#fffcfc</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-20</Startt>
+			<Showequation>true</Showequation>
+			<P2>10</P2>
+			<P1>3.99</P1>
+			<Equation>5</Equation>
+			<Endt>20</Endt>
+		</Functionparameters>
+	</Enigma2>
+</config>

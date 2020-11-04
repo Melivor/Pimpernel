@@ -37,7 +37,7 @@ public:
     void redraw(){update();}
     Q_INVOKABLE void saveAsPng(QUrl url, int width=1920, int height=1080);
     Q_INVOKABLE void save(const QString& name);
-    Q_INVOKABLE QUrl pngPath(QString name){QString path=m_settings->path();auto strList=path.split("/"); path.remove(strList.back()); path+=name; path+=".png";QUrl url =QUrl::fromLocalFile(path); qDebug()<<"Url is:"<<url<<url.isValid(); return url;}
+    Q_INVOKABLE QUrl pngPath(QString name){QString path=m_settings->path(); path+=name; path+=".png";QUrl url =QUrl::fromLocalFile(path); return url;}
 protected:
     WallpaperGeneratorSettings* m_settings;
 };

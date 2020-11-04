@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Nightsky>
+		<Standard>
+			<Stroke>0</Stroke>
+			<Iterations>450</Iterations>
+			<Colorful>true</Colorful>
+			<Basecolor>#e4e4fd</Basecolor>
+			<Backgroundcolor>#242424</Backgroundcolor>
+		</Standard>
+		<Specific>
+			<yspacing>25.095000000000002</yspacing>
+			<xspacing>0.1</xspacing>
+			<Raindroplength>0.1</Raindroplength>
+			<Angle>0</Angle>
+		</Specific>
+	</Nightsky>
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Myst>
+		<Transformations>
+			<Scale>41.25</Scale>
+			<Rotationnumber>1</Rotationnumber>
+			<Angle>135</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1.0625</Stroke>
+			<Ptnumber>10000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#a8706b</Basecolor>
+			<Backgroundcolor>#efe9db</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-20</Startt>
+			<Showequation>true</Showequation>
+			<P2>-5</P2>
+			<P1>-14.99</P1>
+			<Equation>4</Equation>
+			<Endt>20</Endt>
+		</Functionparameters>
+	</Myst>
+</config>

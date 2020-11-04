@@ -5,15 +5,11 @@
 #include "standarditemwithactions.h"
 #include <QImageWriter>
 #include <QPainterPath>
+#include <QDir>
 ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSettings(QObject* parent) : WallpaperGeneratorSettings(setupPrototype(), parent)
 {
-    // m_patternPainter=new RainPainter(this);
-    getModelList();
-    for(int row=0; row<rowCount(); ++row){
-        qDebug()<<"Data: "<<data(index(row)).toString();
 
-    }
-    setActiveSelection("ParametricEquationsShapeGenerator");
+
 
 }
 
@@ -25,6 +21,7 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupPrototype()
     mainModel->appendSection(setupStartValue());
     mainModel->appendSection(setupFunctionParameters());
     mainModel->appendSection(setupSpecificSection());
+   // setActiveSelection("ParametricEquationsShapeGenerator");
     return mainModel;
 }
 
@@ -66,7 +63,7 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
 {
     StandardItemModel* model=new StandardItemModel("Function parameters");
     StandardItemWithActions* equationSettings=new StandardItemWithActions(QObject::tr("Equation"), 0,"ComboBox.qml",0,tr("Equation to use"),"",0,0,getEquationsName());
-    equationSettings->addAction(std::bind(&ParametricEquationsShapeGeneratorSettings::setDefaultFunctionParameters, this));
+    //equationSettings->addAction(std::bind(&ParametricEquationsShapeGeneratorSettings::setDefaultFunctionParameters, this));
     model->appendRow(equationSettings);
     //model->appendRow(new StandardItem(QObject::tr("Equation"), 0,"ComboBox.qml",0,tr("Equation to use"),"",0,0,getEquationsName()));
     model->appendRow(new StandardItem(QObject::tr("Show equation"), true,"CheckBox.qml",0,tr("Show equation ?")));
@@ -80,7 +77,6 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
 
 void ParametricEquationsShapeGeneratorSettings::setDefaultFunctionParameters()
 {
-    qDebug()<<"Set default function parameters";
     setActiveData("Start t",QVariant(parametricFunctions[getActiveData("Equation").toInt()].tmin));
     setActiveData("End t",QVariant(parametricFunctions[getActiveData("Equation").toInt()].tmax));
     setActiveData("P1",QVariant(parametricFunctions[getActiveData("Equation").toInt()].p1));
@@ -121,7 +117,6 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
         font.setPointSize(16);
         QFontMetrics fm(font);
         painter->setFont(font);
-        qDebug()<<"Wrinting legend, p1 is: "<<m_settings->getActiveData("P1").toDouble();
         QStringList legends;
         legends.push_back(m_parametricFunctions[function].equationXString(m_settings->getActiveData("P1").toDouble(), m_settings->getActiveData("P2").toDouble()));
         legends.push_back(m_parametricFunctions[function].equationYString(m_settings->getActiveData("P1").toDouble(), m_settings->getActiveData("P2").toDouble()));
@@ -144,7 +139,6 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
     //computeY=m_computeYFunctions.at(function);
     computeX=std::bind(m_parametricFunctions[function].equationX, std::placeholders::_1, m_settings->getActiveData("P1").toDouble(),m_settings->getActiveData("P2").toDouble());
     computeY=std::bind(m_parametricFunctions[function].equationY, std::placeholders::_1, m_settings->getActiveData("P1").toDouble(),m_settings->getActiveData("P2").toDouble());
-    qDebug()<<"function is: "<<function;
 
     double h;
     double s;

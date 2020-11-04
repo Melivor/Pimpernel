@@ -114,7 +114,6 @@ void PolygonGenerator::paint(QPainter *painter, double width, double height)
         //    painter->setBrush(Qt::NoBrush);
         //}
         painter->drawPolygon(hexa);
-        qDebug()<<"Hexa: "<<hexa;
 //                for(int i=0; i<hexa.size()-1; ++i){
 //                   auto&& pt=hexa[i]+(hexa[i+1]-hexa[i])/2;
 //                  // auto&& npt=center+(pt-center)*2;

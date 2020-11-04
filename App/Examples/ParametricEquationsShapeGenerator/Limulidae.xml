@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Limulidae>
+		<Transformations>
+			<Scale>37.5</Scale>
+			<Rotationnumber>7</Rotationnumber>
+			<Angle>0</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1.0625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#8b3b56</Basecolor>
+			<Backgroundcolor>#ddcece</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-3</Startt>
+			<Showequation>true</Showequation>
+			<P2>15</P2>
+			<P1>7.32</P1>
+			<Equation>1</Equation>
+			<Endt>3</Endt>
+		</Functionparameters>
+	</Limulidae>
+</config>

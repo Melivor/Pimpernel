@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<PolygonGenerator>
+		<Startvalue>
+			<Startpositiony>412.5</Startpositiony>
+			<Startpositionx>0</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0</Stroke>
+			<Iterations>63</Iterations>
+			<Colorful>false</Colorful>
+			<Basecolor>#ce0168</Basecolor>
+			<Backgroundcolor>#d9c4c4</Backgroundcolor>
+		</Standard>
+		<Specific>
+			<Spacing>0.9706249999999998</Spacing>
+			<Radius>39.55625</Radius>
+			<Opacity>147</Opacity>
+			<Edgenumber>6</Edgenumber>
+			<Angle>1.3744467859455345</Angle>
+		</Specific>
+	</PolygonGenerator>
+</config>

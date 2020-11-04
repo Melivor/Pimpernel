@@ -56,7 +56,6 @@ void RainGenerator::paint(QPainter *painter, double width, double height)
     double x=0;
     double y=0;
 
-   // qDebug()<<"x spacing : "<<m_settings->getActiveData("Rain drop length").toDouble()<<" y: "<<m_settings->getActiveData("y spacing").toDouble();
     while(x<width){
         while(y<height){
 

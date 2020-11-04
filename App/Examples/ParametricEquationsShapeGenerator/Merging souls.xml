@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Mergingsouls>
+		<Transformations>
+			<Scale>32.5</Scale>
+			<Rotationnumber>3</Rotationnumber>
+			<Angle>90</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.5625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#e7d4da</Basecolor>
+			<Backgroundcolor>#322525</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>0</Startt>
+			<Showequation>true</Showequation>
+			<P2>8.99</P2>
+			<P1>14.99</P1>
+			<Equation>3</Equation>
+			<Endt>50</Endt>
+		</Functionparameters>
+	</Mergingsouls>
+</config>

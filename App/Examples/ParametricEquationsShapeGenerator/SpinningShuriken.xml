@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<SpinningShuriken>
+		<Transformations>
+			<Scale>32.5</Scale>
+			<Rotationnumber>10</Rotationnumber>
+			<Angle>42.75</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.5625</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#d6d4e7</Basecolor>
+			<Backgroundcolor>#312f2e</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>0</Startt>
+			<Showequation>true</Showequation>
+			<P2>9.99</P2>
+			<P1>9.97</P1>
+			<Equation>3</Equation>
+			<Endt>50</Endt>
+		</Functionparameters>
+	</SpinningShuriken>
+</config>
