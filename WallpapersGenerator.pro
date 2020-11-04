@@ -4,3 +4,4 @@ SUBDIRS += StandardItemModel \
 
  
  App.depends = StandardItemModel
+

@@ -37,14 +37,15 @@ QML_IMPORT_PATH = $$PWD/../HorusStyle/import/
 QML_DESIGNER_IMPORT_PATH =
 
 
-INCLUDEPATH += ../StandardItemModel
-win32:CONFIG(release, debug|release): LIBS += -L../StandardItemModel/release -lStandardItemModel
-win32:CONFIG(debug, debug|release): LIBS += -L../StandardItemModel/debug -lStandardItemModel
+#INCLUDEPATH += ../StandardItemModel
+#win32:CONFIG(release, debug|release): LIBS += -L../StandardItemModel/release -lStandardItemModel
+#win32:CONFIG(debug, debug|release): LIBS += -L../StandardItemModel/debug -lStandardItemModel
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 
 HEADERS += \
     curvelinegenerator.h \
@@ -55,3 +56,16 @@ HEADERS += \
     polygonpainter2.h \
     raingenerator.h \
     wallpapergenerator.h
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../StandardItemModel/release/ -lStandardItemModel
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../StandardItemModel/debug/ -lStandardItemModel
+else:unix: LIBS += -L$$OUT_PWD/../StandardItemModel/ -lStandardItemModel
+
+INCLUDEPATH += $$PWD/../StandardItemModel
+DEPENDPATH += $$PWD/../StandardItemModel
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../StandardItemModel/release/libStandardItemModel.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../StandardItemModel/debug/libStandardItemModel.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../StandardItemModel/release/StandardItemModel.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../StandardItemModel/debug/StandardItemModel.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../StandardItemModel/libStandardItemModel.a
