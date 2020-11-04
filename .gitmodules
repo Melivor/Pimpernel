@@ -1,0 +1,12 @@
+[submodule "HorusStyle"]
+	path = HorusStyle
+	url = git@192.168.1.42:base/libraries/Qml/HorusStyle
+[submodule "ItemView"]
+	path = ItemView
+	url = git@192.168.1.42:base/libraries/Qml/ItemView
+[submodule "StandardItemModel"]
+	path = StandardItemModel
+	url = git@192.168.1.42:base/libraries/StandardItemModel
+[submodule "VariousCustomTypes"]
+	path = VariousCustomTypes
+	url = git@192.168.1.42:base/libraries/Qml/VariousCustomTypes
