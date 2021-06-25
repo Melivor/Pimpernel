@@ -11,18 +11,29 @@
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5625</Stroke>
+			<Stroke>0.5</Stroke>
 			<Ptnumber>50000</Ptnumber>
 			<Colorful>false</Colorful>
 			<Basecolor>#c7c7c7</Basecolor>
 			<Backgroundcolor>#302d29</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>-50.01</p2>
+			<p10></p10>
+			<p1>10.01</p1>
 			<Startt>-6.2</Startt>
 			<Showequation>true</Showequation>
-			<P2>-50.01</P2>
-			<P1>10.01</P1>
-			<Equation>0</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>9*cos(p1*t)^2*sin(sin(p2*t))</Equationy>
+			<Equationx>10*sin(p1*t)*round(sqrt(cos(cos(p2*t))))</Equationx>
 			<Endt>6.2</Endt>
 		</Functionparameters>
 	</Beetle>

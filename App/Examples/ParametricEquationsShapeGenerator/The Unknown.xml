@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<TheUnknown>
+		<Transformations>
+			<Scale>35</Scale>
+			<Rotationnumber>3</Rotationnumber>
+			<Angle>0</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.5</Startpositiony>
+			<Startpositionx>0.5125</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.25</Stroke>
+			<Ptnumber>50000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#eeacb8</Basecolor>
+			<Backgroundcolor>#3a3b53</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<p9>0</p9>
+			<p8>0</p8>
+			<p7>0</p7>
+			<p6>0</p6>
+			<p5>0</p5>
+			<p4>1.668125</p4>
+			<p3>1.550375</p3>
+			<p2>1.1002525</p2>
+			<p10>0</p10>
+			<p1>60.09001875</p1>
+			<Startt>-10</Startt>
+			<Showequation>true</Showequation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>10*cos(p2*t+p4)*cos(p1*t+p3)^3</Equationy>
+			<Equationx>10*sin(p1*t+p5)/(1+cos(p2*t+p6)^2)</Equationx>
+			<Endt>10</Endt>
+		</Functionparameters>
+	</TheUnknown>
+</config>

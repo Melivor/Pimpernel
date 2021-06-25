@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Voluptis>
+		<Transformations>
+			<Scale>50</Scale>
+			<Rotationnumber>3</Rotationnumber>
+			<Angle>0</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>0.5625</Stroke>
+			<Ptnumber>10000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#aaaaff</Basecolor>
+			<Backgroundcolor>#313038</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<Startt>-125</Startt>
+			<Showequation>true</Showequation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<P9></P9>
+			<P8></P8>
+			<P7></P7>
+			<P6></P6>
+			<P5></P5>
+			<P4></P4>
+			<P3>1</P3>
+			<P2>-2.653</P2>
+			<P10></P10>
+			<P1>0.531</P1>
+			<Equationy>4*0.9*(cos(2.50001*t))^2*sin(sin(8.2*t))</Equationy>
+			<Equationx>10*sin(2.78*t)*rint(sqrt(cos(cos(8.2*t))))</Equationx>
+			<Endt>120</Endt>
+		</Functionparameters>
+	</Voluptis>
+</config>

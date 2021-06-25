@@ -11,19 +11,30 @@
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>1.125</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>1</Stroke>
+			<Ptnumber>2000</Ptnumber>
 			<Colorful>false</Colorful>
 			<Basecolor>#891d42</Basecolor>
 			<Backgroundcolor>#e3c1be</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
-			<Startt>-6</Startt>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>10</p2>
+			<p10></p10>
+			<p1>9.9</p1>
+			<Startt>-10</Startt>
 			<Showequation>true</Showequation>
-			<P2>10</P2>
-			<P1>9.9</P1>
-			<Equation>0</Equation>
-			<Endt>6</Endt>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>9*cos(p1*t)^2*sin(sin(p2*t))</Equationy>
+			<Equationx>10*sin(p1*t)*round(sqrt(cos(cos(p2*t))))</Equationx>
+			<Endt>10</Endt>
 		</Functionparameters>
 	</Bloodsun>
 </config>

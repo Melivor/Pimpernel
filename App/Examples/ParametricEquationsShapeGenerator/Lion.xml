@@ -2,7 +2,7 @@
 <config>
 	<Lion>
 		<Transformations>
-			<Scale>32.5</Scale>
+			<Scale>60</Scale>
 			<Rotationnumber>4</Rotationnumber>
 			<Angle>112.5</Angle>
 		</Transformations>
@@ -11,18 +11,29 @@
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5625</Stroke>
+			<Stroke>0.5</Stroke>
 			<Ptnumber>50000</Ptnumber>
 			<Colorful>true</Colorful>
-			<Basecolor>#d6d4e7</Basecolor>
-			<Backgroundcolor>#514e4c</Backgroundcolor>
+			<Basecolor>#c4c0e7</Basecolor>
+			<Backgroundcolor>#393735</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>15</p2>
+			<p10></p10>
+			<p1>14.98</p1>
 			<Startt>-10</Startt>
 			<Showequation>true</Showequation>
-			<P2>15</P2>
-			<P1>14.98</P1>
-			<Equation>4</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>4*exp(cos(p1*t))*sin(p2*t)</Equationy>
+			<Equationx>4*exp(sin(p1*t))*((cos(p2*t)))</Equationx>
 			<Endt>10</Endt>
 		</Functionparameters>
 	</Lion>

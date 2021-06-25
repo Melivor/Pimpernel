@@ -1,11 +1,7 @@
-#ifndef WALLPAPERGENERATOR_H
+ #ifndef WALLPAPERGENERATOR_H
 #define WALLPAPERGENERATOR_H
 #include "standarditemmodelexplorer.h"
-//#include "patternpainter.h"
 #include "QQuickPaintedItem"
-
-
-
 
 class WallpaperGeneratorSettings : public StandardItemModelExplorer
 {

@@ -1,8 +1,8 @@
 QT += quick \
-    widgets
+    widgets \
 
-
-CONFIG += c++11
+RC_ICONS = icon.ico
+CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -16,15 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        curvelinegenerator.cpp \
         main.cpp \
-        networkpainter.cpp \
+        wallpapergenerator.cpp \
+        parametricequation.cpp \
         parametricequationshapegenerator.cpp \
-        patternpainter.cpp \
-        polygongenerator.cpp \
-        polygonpainter2.cpp \
-        raingenerator.cpp \
-        wallpapergenerator.cpp
+        #conformaldiskrepresentation.cpp \
+        #curvelinegenerator.cpp \
+        #networkpainter.cpp \
+        #patternpainter.cpp \
+        #polygongenerator.cpp \
+        #polygonpainter2.cpp \
+        #raingenerator.cpp \
+
 
 RESOURCES += qml.qrc \
              $$PWD/../HorusStyle/horusStyle.qrc \
@@ -48,14 +51,32 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 HEADERS += \
-    curvelinegenerator.h \
-    networkpainter.h \
+    wallpapergenerator.h\
+    parametricequation.h \
     parametricequationshapegenerator.h \
-    patternpainter.h \
-    polygongenerator.h \
-    polygonpainter2.h \
-    raingenerator.h \
-    wallpapergenerator.h
+
+    #ConformalDiskModel.h \
+    #conformaldiskrepresentation.h \
+    #curvelinegenerator.h \
+    #networkpainter.h \
+    #patternpainter.h \
+    #polygongenerator.h \
+    #polygonpainter2.h \
+    #raingenerator.h \
+
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../muparser/release/ -lmuparser
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../muparser/debug/ -lmuparser
+
+INCLUDEPATH += $$PWD/../muparser
+DEPENDPATH += $$PWD/../muparser
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../muparser/release/libmuparser.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../muparser/debug/libmuparser.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../muparser/release/muparser.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../muparser/debug/muparser.lib
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../StandardItemModel/release/ -lStandardItemModel
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../StandardItemModel/debug/ -lStandardItemModel

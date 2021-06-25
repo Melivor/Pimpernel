@@ -10,3 +10,6 @@
 [submodule "VariousCustomTypes"]
 	path = VariousCustomTypes
 	url = git@192.168.1.42:base/libraries/Qml/VariousCustomTypes
+[submodule "muparser"]
+	path = muparser
+	url = https://github.com/beltoforion/muparser

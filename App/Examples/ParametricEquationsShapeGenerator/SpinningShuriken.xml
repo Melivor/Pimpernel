@@ -2,27 +2,39 @@
 <config>
 	<SpinningShuriken>
 		<Transformations>
-			<Scale>32.5</Scale>
+			<Scale>40</Scale>
 			<Rotationnumber>10</Rotationnumber>
-			<Angle>42.75</Angle>
+			<Angle>0</Angle>
 		</Transformations>
 		<Startvalue>
 			<Startpositiony>0.50625</Startpositiony>
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5625</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>0.1</Stroke>
+			<Ptnumber>5000</Ptnumber>
 			<Colorful>false</Colorful>
 			<Basecolor>#d6d4e7</Basecolor>
 			<Backgroundcolor>#312f2e</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>9.99</p2>
+			<p10></p10>
+			<p1>9.97</p1>
 			<Startt>0</Startt>
 			<Showequation>true</Showequation>
-			<P2>9.99</P2>
-			<P1>9.97</P1>
-			<Equation>3</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>9*cos(p1*t)^2*sin(p2*t)</Equationy>
+			<Equationx>10*sin(p1*t)*(cos(cos(p2*t)))</Equationx>
+			
 			<Endt>50</Endt>
 		</Functionparameters>
 	</SpinningShuriken>

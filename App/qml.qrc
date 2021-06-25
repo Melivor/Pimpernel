@@ -23,8 +23,6 @@
         <file>Examples/ParametricEquationsShapeGenerator/Beetle.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/Blood sun.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/Blood sun.xml</file>
-        <file>Examples/ParametricEquationsShapeGenerator/Enigma 2.png</file>
-        <file>Examples/ParametricEquationsShapeGenerator/Enigma 2.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/Enigma.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/Enigma.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/Limulidae.png</file>
@@ -36,8 +34,6 @@
         <file>Examples/ParametricEquationsShapeGenerator/Myst.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/Myst.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/ParametricEquationsShapeGenerator.xml</file>
-        <file>Examples/ParametricEquationsShapeGenerator/SandChrysanthème.png</file>
-        <file>Examples/ParametricEquationsShapeGenerator/SandChrysanthème.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/Scarlet Pimpernel.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/Scarlet Pimpernel.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/SpinningShuriken.png</file>
@@ -56,5 +52,32 @@
         <file>Examples/RainGenerator/RainGenerator.xml</file>
         <file>Examples/RainGenerator/White background.png</file>
         <file>Examples/RainGenerator/White background.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Angel.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Angel.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Convergence.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Convergence.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Divergence.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Divergence.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Flame.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Flame.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Lys.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Lys.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Ob.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Ob.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Rosace 2.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Rosace 2.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Rosace.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Rosace.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Shiva.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Shiva.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Souls.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Souls.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Tournesol.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Tournesol.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Vampire.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Vampire.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Voluptis.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Voluptis.xml</file>
+        <file>SplashScreen.qml</file>
     </qresource>
 </RCC>

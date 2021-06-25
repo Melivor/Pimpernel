@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Flame>
+		<Transformations>
+			<Scale>48.125</Scale>
+			<Rotationnumber>1</Rotationnumber>
+			<Angle>90</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1</Stroke>
+			<Ptnumber>5000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#d7f3ff</Basecolor>
+			<Backgroundcolor>#284d63</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>1.09</p2>
+			<p10></p10>
+			<p1>9.78</p1>
+			<Startt>-16</Startt>
+			<Showequation>true</Showequation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>9*cos(p1*t)^2*sin(p2*t)</Equationy>
+			<Equationx>10*sin(p1*t)*(cos(cos(p2*t)))</Equationx>
+			<Endt>16</Endt>
+		</Functionparameters>
+	</Flame>
+</config>

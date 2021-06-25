@@ -2,7 +2,7 @@
 <config>
 	<Mergingsouls>
 		<Transformations>
-			<Scale>32.5</Scale>
+			<Scale>50</Scale>
 			<Rotationnumber>3</Rotationnumber>
 			<Angle>90</Angle>
 		</Transformations>
@@ -11,18 +11,29 @@
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5625</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>0.5</Stroke>
+			<Ptnumber>10000</Ptnumber>
 			<Colorful>true</Colorful>
-			<Basecolor>#e7d4da</Basecolor>
+			<Basecolor>#e7bec9</Basecolor>
 			<Backgroundcolor>#322525</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
-			<Startt>0</Startt>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>8.99</p2>
+			<p10></p10>
+			<p1>14.99</p1>
+			<Startt>1</Startt>
 			<Showequation>true</Showequation>
-			<P2>8.99</P2>
-			<P1>14.99</P1>
-			<Equation>3</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>9*cos(p1*t)^2*sin(p2*t)</Equationy>
+			<Equationx>10*sin(p1*t)*(cos(cos(p2*t)))</Equationx>
 			<Endt>50</Endt>
 		</Functionparameters>
 	</Mergingsouls>

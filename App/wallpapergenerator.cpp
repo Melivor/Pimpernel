@@ -5,14 +5,20 @@
 
 WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* prototype, QObject* parent):StandardItemModelExplorer(prototype, parent)
 {
-    QDir dir(":/Examples/"+activeModel()->root());
-    QStringList strList=dir.entryList();
-    for(auto str:strList){
-        if(!QFile::exists(path()+str)){
-            QFile::copy(dir.path()+"/"+str,path()+str);
-        }
-    }
+
     getModelList();
+    if(rowCount()<2){
+        qDebug()<<__PRETTY_FUNCTION__<<": is empty!";
+        QDir dir(":/Examples/"+activeModel()->root());
+        QStringList strList=dir.entryList();
+        for(auto str:strList){
+            //if(!QFile::exists(path()+str)){
+                QFile::copy(dir.path()+"/"+str,path()+str);
+            //}
+        }
+        getModelList();
+
+    }
     setActiveSelection(activeModel()->root());
 }
 
@@ -53,11 +59,13 @@ void WallpaperGenerator::save(const QString& name)
     m_settings->activeModel()->setName(pname);
 
 }
+
 void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
 {
 
-    QImage image(width, height, QImage::Format_RGB32);
-    image.fill(QColor(m_settings->backgroundColor()));
+    QImage image(width, height, QImage::Format_ARGB32);
+        image.fill(QColor(m_settings->backgroundColor()));
+
     QPainter painter;
     painter.begin(&image);
     double scale=std::min(image.width()/this->width(), image.height()/this->height());

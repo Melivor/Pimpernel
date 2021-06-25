@@ -4,25 +4,36 @@
 		<Transformations>
 			<Scale>47.5</Scale>
 			<Rotationnumber>3</Rotationnumber>
-			<Angle>135</Angle>
+			<Angle>90</Angle>
 		</Transformations>
 		<Startvalue>
 			<Startpositiony>0.50625</Startpositiony>
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>1.0625</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>1</Stroke>
+			<Ptnumber>10000</Ptnumber>
 			<Colorful>false</Colorful>
 			<Basecolor>#a8706b</Basecolor>
 			<Backgroundcolor>#efe9db</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>-4.998875</p2>
+			<p10></p10>
+			<p1>-14.985</p1>
 			<Startt>-20</Startt>
 			<Showequation>true</Showequation>
-			<P2>-5</P2>
-			<P1>-14.99</P1>
-			<Equation>1</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
+			<Equationx>10*sin(p1*t)/(1+cos(p2*t)^2)</Equationx>
 			<Endt>20</Endt>
 		</Functionparameters>
 	</ScarletPimpernel>

@@ -9,7 +9,101 @@ Window {
     id:mainWindow
     visible: true
     visibility: Window.Maximized
-    title: qsTr("Generator")
+    title: qsTr("Pimpernel")
+    property bool fullScreen: false
+    property bool showExample: false
+    property bool showBar: false
+    //FocusScope{
+      //  anchors.fill:parent
+
+
+    Timer{
+        id:exampleTimer
+        repeat: false
+        onTriggered: if(mouseArea.mouseY<(mainWindow.height-150)){
+                          showExample=false
+                     }
+                     else{
+                         exampleTimer.restart()
+                     }
+
+        interval: 2000
+        running: false
+    }
+    Timer{
+        id:barTimer
+        repeat: false
+        onTriggered: {
+            if(fullScreen && mouseArea.mouseX<15){
+                barTimer.restart()
+            }
+            else if(!fullScreen && mouseArea.mouseX<415){
+                barTimer.restart()
+            }
+            else{
+                showBar=false
+            }
+        }
+
+        interval: 2000
+        running: false
+    }
+
+    MouseArea{
+        id:mouseArea
+        anchors.fill:parent
+        hoverEnabled: true
+        onMouseYChanged:{
+           // console.log(mouseY,"/",mainWindow.height-150)
+
+            if(mouseY>(mainWindow.height-150)){
+                exampleTimer.start()
+                showExample=true;
+
+            }
+        }
+        onMouseXChanged: {
+            if(fullScreen && mouseX<15){
+                showBar=true
+                barTimer.start()
+            }
+            else if(!fullScreen && mouseX<415){
+                showBar=true
+                barTimer.start()
+            }
+            if(focus === false && mouseX > 415){
+                focus=true
+            }
+        }
+
+       // onClicked:scope.focus=true
+        Keys.onPressed:{
+            console.log("Key pressed");
+            if(event.key === Qt.Key_F5){
+                            if(visibility==Window.FullScreen){
+                                console.log("F5 pressed")
+                                visibility= Window.Maximized
+                            }
+                            else{
+                                visibility=Window.FullScreen
+                            }
+                        }
+            if(event.key === Qt.Key_Escape){
+                visibility= Window.Maximized
+            }
+            if(event.key === Qt.Key_Right){
+                listView.incrementCurrentIndex()
+                loader.item.settings.setActiveSelection(listView.currentIndex, false)
+                //console.log("right click, index ", listView.currentIndex, loader.item.settings.at(listView.currentIndex))
+            }
+
+            else if(event.key === Qt.Key_Left){
+                listView.decrementCurrentIndex()
+                loader.item.settings.setActiveSelection(listView.currentIndex, false)
+            }
+        }
+    }
+
     HorusTheme{
         id:horusTheme
     }
@@ -56,23 +150,55 @@ Window {
         anchors.fill:parent
         anchors.leftMargin: rect.width
         property var item
+
+        //Keys.onLeftPressed: console.log("move left")
         //  sourceComponent: Component{PolygonPainter{}}
     }
+    Button{
+          anchors.top: loader.top
+          anchors.bottom: loader.bottom
+
+          anchors.left:loader.left
+          opacity: 1
+          width: 15
+          text:fullScreen?">":"<"
+          visible: showBar
+          onClicked: {
+
+              fullScreen=!fullScreen
+          }
+
+    }
     Rectangle{
-        height: 150
+        id:exampleListView
+        height: 0
+       // visible: showExample
         anchors.bottom: parent.bottom
         anchors.right:parent.right
         anchors.left:rect.right
+        NumberAnimation on height {
+                running: showExample
+                from: 0; to: 150
+            }
+        NumberAnimation on height {
+                running: !showExample
+                from: 150; to: 0
+            }
+        transitions: Transition {
+                PropertyAnimation { property: "height"; duration: 1000 }
+            }
         ListView{
+            id:listView
             width: parent.width
             height: parent.height
             clip:true
+
             delegate: Rectangle{
                 implicitHeight: 150
                 implicitWidth: visible?250:0
                 enabled: visible
 
-                visible: loader.item.settings.activeModel.name!==display && display!==loader.item.settings.activeModel.root
+                visible: display!==loader.item.settings.activeModel.root // && loader.item.settings.activeModel.name!==display
                 Image{
                     id:image
                     anchors.fill:parent
@@ -91,10 +217,25 @@ Window {
                 }
                 MouseArea{
                     anchors.fill:parent
-                    onClicked: {
-
-                        loader.item.settings.copyProfilSettings(display)
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    Menu {
+                        id: contextMenuObject
+                        MenuItem { text: qsTr("Delete")
+                            onTriggered: loader.item.settings.deleteProfilSettings(display)
+                        }
                     }
+                    onClicked: {
+                        if(mouse.button & Qt.RightButton) {
+                            contextMenuObject.open(mouseX, mouseY)
+                        }
+                        else{
+                            loader.item.settings.copyProfilSettings(display, false)
+                            listView.currentIndex=index
+                        }
+
+
+                    }
+
                 }
             }
             model:loader.item.settings
@@ -104,7 +245,8 @@ Window {
 
     Rectangle{
         id:rect
-        width: 400
+        visible: fullScreen?false:true
+        width: fullScreen?0:400
         anchors.left: parent.left
         height: parent.height
         color:horusTheme.backgroundColor
@@ -164,4 +306,5 @@ Window {
             onClicked:exportDialog.open()
         }
     }
+    //}
 }

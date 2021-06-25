@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<PinkClematis>
+		<Transformations>
+			<Scale>35</Scale>
+			<Rotationnumber>4</Rotationnumber>
+			<Angle>90</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1</Stroke>
+			<Ptnumber>20000</Ptnumber>
+			<Colorful>false</Colorful>
+			<Basecolor>#e3b3e6</Basecolor>
+			<Backgroundcolor>#2d2d2d</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6>1.57</p6>
+			<p5>0</p5>
+			<p4>0</p4>
+			<p3>0</p3>
+			<p2>-4.4934375</p2>
+			<p10></p10>
+			<p1>-14.985</p1>
+			<Startt>-30</Startt>
+			<Showequation>true</Showequation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
+			<Equationx>10*sin(p1*t)/(1+cos(p2*t+p6)^2)</Equationx>
+			<Endt>30</Endt>
+		</Functionparameters>
+	</PinkClematis>
+</config>

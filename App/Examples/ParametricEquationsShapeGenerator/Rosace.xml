@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Rosace>
+		<Transformations>
+			<Scale>50</Scale>
+			<Rotationnumber>6</Rotationnumber>
+			<Angle>90</Angle>
+		</Transformations>
+		<Startvalue>
+			<Startpositiony>0.50625</Startpositiony>
+			<Startpositionx>0.4875</Startpositionx>
+		</Startvalue>
+		<Standard>
+			<Stroke>1</Stroke>
+			<Ptnumber>5000</Ptnumber>
+			<Colorful>true</Colorful>
+			<Basecolor>#a76f81</Basecolor>
+			<Backgroundcolor>#2b2b38</Backgroundcolor>
+		</Standard>
+		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>50.0575</p2>
+			<p10></p10>
+			<p1>10.02</p1>
+			<Startt>-3</Startt>
+			<Showequation>true</Showequation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
+			<Equationx>10*sin(p1*t)/(1+cos(p2*t)^2)</Equationx>
+			<Endt>3</Endt>
+		</Functionparameters>
+	</Rosace>
+</config>

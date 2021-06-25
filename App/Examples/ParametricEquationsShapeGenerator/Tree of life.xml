@@ -2,27 +2,38 @@
 <config>
 	<Treeoflife>
 		<Transformations>
-			<Scale>37.5</Scale>
+			<Scale>43.125</Scale>
 			<Rotationnumber>9</Rotationnumber>
-			<Angle>81</Angle>
+			<Angle>80</Angle>
 		</Transformations>
 		<Startvalue>
 			<Startpositiony>0.50625</Startpositiony>
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>1.0625</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>0.8125</Stroke>
+			<Ptnumber>10000</Ptnumber>
 			<Colorful>true</Colorful>
 			<Basecolor>#cc8486</Basecolor>
 			<Backgroundcolor>#3d3939</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>15.00625</p2>
+			<p10></p10>
+			<p1>7.35</p1>
 			<Startt>-3</Startt>
 			<Showequation>true</Showequation>
-			<P2>15</P2>
-			<P1>7.32</P1>
-			<Equation>1</Equation>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
+			<Equationx>10*sin(p1*t)/(1+cos(p2*t)^2)</Equationx>
 			<Endt>3</Endt>
 		</Functionparameters>
 	</Treeoflife>

@@ -2,8 +2,8 @@
 <config>
 	<Enigma>
 		<Transformations>
-			<Scale>31.874999999999996</Scale>
-			<Rotationnumber>1</Rotationnumber>
+			<Scale>50</Scale>
+			<Rotationnumber>2</Rotationnumber>
 			<Angle>45</Angle>
 		</Transformations>
 		<Startvalue>
@@ -11,19 +11,31 @@
 			<Startpositionx>0.4875</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5625</Stroke>
-			<Ptnumber>20000</Ptnumber>
+			<Stroke>1</Stroke>
+			<Ptnumber>4500</Ptnumber>
 			<Colorful>true</Colorful>
 			<Basecolor>#9195a8</Basecolor>
 			<Backgroundcolor>#fffcfc</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
-			<Startt>-40</Startt>
+			<p9></p9>
+			<p8></p8>
+			<p7></p7>
+			<p6></p6>
+			<p5></p5>
+			<p4></p4>
+			<p3></p3>
+			<p2>3.99</p2>
+			<p10></p10>
+			<p1>10</p1>
+			<Startt>-20</Startt>
 			<Showequation>true</Showequation>
-			<P2>2</P2>
-			<P1>14.99</P1>
-			<Equation>4</Equation>
-			<Endt>40</Endt>
+			<Fontsize>14</Fontsize>
+			<Font>Amazone BT</Font>
+			<Equationy>4*exp(cos(p2*t))*cos(p1*t)</Equationy>
+			<Equationx>4*exp(sin(p1*t))*((sin(p2*t)))</Equationx>
+			<Equation>5</Equation>
+			<Endt>20</Endt>
 		</Functionparameters>
 	</Enigma>
 </config>

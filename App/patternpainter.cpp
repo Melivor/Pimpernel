@@ -1,7 +1,7 @@
 #include "patternpainter.h"
 #include <QPainter>
 #include <QImageWriter>
-
+#include <QElapsedTimer>
 PatternPainter::PatternPainter(QQuickItem *parent):QQuickPaintedItem(parent)
 {
     m_backgroundColor=QColor::fromHsl(0,0,80,255);
@@ -12,6 +12,7 @@ void PatternPainter::paint(QPainter *painter)
 {
 
     paint(painter, width(), height());
+
 }
 
 void PatternPainter::saveAsPng(QUrl url)

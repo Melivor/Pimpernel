@@ -1,13 +1,5 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
-//#include "linepainter.h"
-//#include "polygonpainter.h"
-//#include "polygonpainter2.h"
-//#include "barnsleyfern.h"
-//#include <rainpainter.h>
-#include "raingenerator.h"
-#include "curvelinegenerator.h"
-#include "polygongenerator.h"
 #include "parametricequationshapegenerator.h"
 #include <QQmlContext>
 int main(int argc, char *argv[])
@@ -17,7 +9,13 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setOrganizationName("2ms");
     app.setOrganizationDomain("2ms.tech");
-
+    app.setApplicationName("Pimpernel");
+    QQmlApplicationEngine* splashEngine=new QQmlApplicationEngine();
+    splashEngine->load("qrc:/SplashScreen.qml");
+    QObject* object=splashEngine->rootObjects().front();
+    app.processEvents();
+    splashEngine->deleteLater();
+    object->setProperty("message", "loading ui...");
 //    MetaLinePainter line;
 //    QList<QObject*> painterList= {
 //        new MetaLinePainter(),
@@ -25,10 +23,7 @@ int main(int argc, char *argv[])
 //        new MetaPolygonPainter2(),
 //    };
         QList<QObject*> painterList= {
-            new MetaRainGenerator(),
             new MetaParametricEquationsShapeGenerator(),
-            new MetaCurveLineGenerator(),
-            new MetaPolygonGenerator(),
         };
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("painterList", QVariant::fromValue(painterList));
