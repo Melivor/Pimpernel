@@ -1,15 +1,15 @@
 [submodule "HorusStyle"]
 	path = HorusStyle
-	url = git@192.168.1.42:base/libraries/Qml/HorusStyle
+	url = https://github.com/Melivor/HorusStyle.git
 [submodule "ItemView"]
 	path = ItemView
-	url = git@192.168.1.42:base/libraries/Qml/ItemView
+	url = https://github.com/Melivor/ItemView.git
 [submodule "StandardItemModel"]
 	path = StandardItemModel
-	url = git@192.168.1.42:base/libraries/StandardItemModel
+	url = https://github.com/Melivor/StandardItemModel.git
 [submodule "VariousCustomTypes"]
 	path = VariousCustomTypes
-	url = git@192.168.1.42:base/libraries/Qml/VariousCustomTypes
+	url = https://github.com/Melivor/VariousCustomTypes.git
 [submodule "muparser"]
 	path = muparser
 	url = https://github.com/beltoforion/muparser
