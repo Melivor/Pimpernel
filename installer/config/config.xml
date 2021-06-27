@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Installer>
-    <Name>Pimpernel</Name>
-    <Version>0.0.0</Version>
-    <Title>Pimpernel Installer</Title>
-    <Publisher>2ms</Publisher>
-    <StartMenuDir>2ms</StartMenuDir>
-    <TargetDir>@ApplicationsDirX64@/Pimpernel</TargetDir>
-</Installer>

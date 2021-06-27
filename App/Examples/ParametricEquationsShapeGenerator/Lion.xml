@@ -7,8 +7,8 @@
 			<Angle>112.5</Angle>
 		</Transformations>
 		<Startvalue>
-			<Startpositiony>0.50625</Startpositiony>
-			<Startpositionx>0.4875</Startpositionx>
+			<Startpositiony>0.5</Startpositiony>
+			<Startpositionx>0.5</Startpositionx>
 		</Startvalue>
 		<Standard>
 			<Stroke>0.5</Stroke>
@@ -18,22 +18,46 @@
 			<Backgroundcolor>#393735</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9759></p9759>
+			<p9758></p9758>
 			<p9></p9>
+			<p8759></p8759>
+			<p8758></p8758>
 			<p8></p8>
+			<p7759></p7759>
+			<p7758></p7758>
 			<p7></p7>
+			<p6759></p6759>
+			<p6758></p6758>
 			<p6></p6>
+			<p5759></p5759>
+			<p5758></p5758>
 			<p5></p5>
+			<p4759></p4759>
+			<p4758></p4758>
 			<p4></p4>
+			<p3759></p3759>
+			<p3758></p3758>
 			<p3></p3>
+			<p2759>14</p2759>
+			<p2758>15</p2758>
 			<p2>15</p2>
+			<p1759>14.9</p1759>
+			<p1758>15</p1758>
+			<p10759></p10759>
+			<p10758></p10758>
 			<p10></p10>
 			<p1>14.98</p1>
+			<Startt759>-20</Startt759>
+			<Startt758>0</Startt758>
 			<Startt>-10</Startt>
 			<Showequation>true</Showequation>
 			<Fontsize>14</Fontsize>
 			<Font>Amazone BT</Font>
 			<Equationy>4*exp(cos(p1*t))*sin(p2*t)</Equationy>
 			<Equationx>4*exp(sin(p1*t))*((cos(p2*t)))</Equationx>
+			<Endt759>0</Endt759>
+			<Endt758>20</Endt758>
 			<Endt>10</Endt>
 		</Functionparameters>
 	</Lion>

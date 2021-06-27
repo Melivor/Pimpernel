@@ -7,8 +7,8 @@
 			<Angle>45</Angle>
 		</Transformations>
 		<Startvalue>
-			<Startpositiony>0.50625</Startpositiony>
-			<Startpositionx>0.4875</Startpositionx>
+			<Startpositiony>0.5</Startpositiony>
+			<Startpositionx>0.5</Startpositionx>
 		</Startvalue>
 		<Standard>
 			<Stroke>1</Stroke>
@@ -18,22 +18,46 @@
 			<Backgroundcolor>#7979b4</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9759></p9759>
+			<p9758></p9758>
 			<p9></p9>
+			<p8759></p8759>
+			<p8758></p8758>
 			<p8></p8>
+			<p7759></p7759>
+			<p7758></p7758>
 			<p7></p7>
+			<p6759></p6759>
+			<p6758></p6758>
 			<p6></p6>
+			<p5759></p5759>
+			<p5758></p5758>
 			<p5></p5>
+			<p4759></p4759>
+			<p4758></p4758>
 			<p4></p4>
+			<p3759></p3759>
+			<p3758></p3758>
 			<p3></p3>
+			<p2759>0</p2759>
+			<p2758>15</p2758>
 			<p2>9.993500000000001</p2>
+			<p1759>10</p1759>
+			<p1758>20</p1758>
+			<p10759></p10759>
+			<p10758></p10758>
 			<p10></p10>
 			<p1>15</p1>
+			<Startt759>-50</Startt759>
+			<Startt758>0</Startt758>
 			<Startt>-20</Startt>
 			<Showequation>true</Showequation>
 			<Fontsize>14</Fontsize>
 			<Font>Amazone BT</Font>
 			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
 			<Equationx>10*sin(p1*t)/(1+cos(p2*t)^2)</Equationx>
+			<Endt759>0</Endt759>
+			<Endt758>50</Endt758>
 			<Endt>10</Endt>
 		</Functionparameters>
 	</Lys>

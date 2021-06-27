@@ -2,7 +2,7 @@
 <config>
 	<Convergence>
 		<Transformations>
-			<Scale>36.875</Scale>
+			<Scale>38</Scale>
 			<Rotationnumber>8</Rotationnumber>
 			<Angle>0</Angle>
 		</Transformations>
@@ -18,22 +18,46 @@
 			<Backgroundcolor>#f0e6d7</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9759></p9759>
+			<p9758></p9758>
 			<p9></p9>
+			<p8759></p8759>
+			<p8758></p8758>
 			<p8></p8>
+			<p7759></p7759>
+			<p7758></p7758>
 			<p7></p7>
+			<p6759></p6759>
+			<p6758></p6758>
 			<p6></p6>
+			<p5759></p5759>
+			<p5758></p5758>
 			<p5></p5>
+			<p4759></p4759>
+			<p4758></p4758>
 			<p4></p4>
+			<p3759></p3759>
+			<p3758></p3758>
 			<p3></p3>
+			<p2759>0</p2759>
+			<p2758>1</p2758>
 			<p2>0.9</p2>
+			<p1759>50</p1759>
+			<p1758>60</p1758>
+			<p10759></p10759>
+			<p10758></p10758>
 			<p10></p10>
 			<p1>60</p1>
+			<Startt759>-10</Startt759>
+			<Startt758>0</Startt758>
 			<Startt>-5</Startt>
 			<Showequation>true</Showequation>
 			<Fontsize>14</Fontsize>
 			<Font>Amazone BT</Font>
 			<Equationy>10*cos(p2*t)*sin(p1*t)^4</Equationy>
 			<Equationx>10*sin(p1*t)/(1+cos(p2*t)^2)</Equationx>
+			<Endt759>0</Endt759>
+			<Endt758>10</Endt758>
 			<Endt>5</Endt>
 		</Functionparameters>
 	</Convergence>

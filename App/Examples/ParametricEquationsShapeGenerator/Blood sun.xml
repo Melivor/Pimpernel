@@ -7,8 +7,8 @@
 			<Angle>175.5</Angle>
 		</Transformations>
 		<Startvalue>
-			<Startpositiony>0.50625</Startpositiony>
-			<Startpositionx>0.4875</Startpositionx>
+			<Startpositiony>0.5</Startpositiony>
+			<Startpositionx>0.5</Startpositionx>
 		</Startvalue>
 		<Standard>
 			<Stroke>1</Stroke>
@@ -18,23 +18,47 @@
 			<Backgroundcolor>#e3c1be</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9759></p9759>
+			<p9758></p9758>
 			<p9></p9>
+			<p8759></p8759>
+			<p8758></p8758>
 			<p8></p8>
+			<p7759></p7759>
+			<p7758></p7758>
 			<p7></p7>
+			<p6759></p6759>
+			<p6758></p6758>
 			<p6></p6>
+			<p5759></p5759>
+			<p5758></p5758>
 			<p5></p5>
+			<p4759></p4759>
+			<p4758></p4758>
 			<p4></p4>
+			<p3759></p3759>
+			<p3758></p3758>
 			<p3></p3>
-			<p2>10</p2>
+			<p2759>9.6</p2759>
+			<p2758>10</p2758>
+			<p2>9.95</p2>
+			<p1759>9.6</p1759>
+			<p1758>10</p1758>
+			<p10759></p10759>
+			<p10758></p10758>
 			<p10></p10>
-			<p1>9.9</p1>
-			<Startt>-10</Startt>
+			<p1>9.8825</p1>
+			<Startt759>-20</Startt759>
+			<Startt758>0</Startt758>
+			<Startt>-7.25</Startt>
 			<Showequation>true</Showequation>
 			<Fontsize>14</Fontsize>
 			<Font>Amazone BT</Font>
 			<Equationy>9*cos(p1*t)^2*sin(sin(p2*t))</Equationy>
 			<Equationx>10*sin(p1*t)*round(sqrt(cos(cos(p2*t))))</Equationx>
-			<Endt>10</Endt>
+			<Endt759>0</Endt759>
+			<Endt758>20</Endt758>
+			<Endt>8.25</Endt>
 		</Functionparameters>
 	</Bloodsun>
 </config>

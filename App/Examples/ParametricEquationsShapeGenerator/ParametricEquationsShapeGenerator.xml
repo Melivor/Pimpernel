@@ -2,39 +2,63 @@
 <config>
 	<ParametricEquationsShapeGenerator>
 		<Transformations>
-			<Scale>43.75</Scale>
-			<Rotationnumber>3</Rotationnumber>
-			<Angle>49.50000000000001</Angle>
+			<Scale>40</Scale>
+			<Rotationnumber>10</Rotationnumber>
+			<Angle>0</Angle>
 		</Transformations>
 		<Startvalue>
-			<Startpositiony>0.50625</Startpositiony>
-			<Startpositionx>0.4875</Startpositionx>
+			<Startpositiony>0.5</Startpositiony>
+			<Startpositionx>0.5</Startpositionx>
 		</Startvalue>
 		<Standard>
-			<Stroke>0.5</Stroke>
-			<Ptnumber>50000</Ptnumber>
+			<Stroke>0.1</Stroke>
+			<Ptnumber>5000</Ptnumber>
 			<Colorful>false</Colorful>
-			<Basecolor>#c7c7c7</Basecolor>
-			<Backgroundcolor>#302d29</Backgroundcolor>
+			<Basecolor>#d6d4e7</Basecolor>
+			<Backgroundcolor>#312f2e</Backgroundcolor>
 		</Standard>
 		<Functionparameters>
+			<p9759></p9759>
+			<p9758></p9758>
 			<p9></p9>
+			<p8759></p8759>
+			<p8758></p8758>
 			<p8></p8>
+			<p7759></p7759>
+			<p7758></p7758>
 			<p7></p7>
+			<p6759></p6759>
+			<p6758></p6758>
 			<p6></p6>
+			<p5759></p5759>
+			<p5758></p5758>
 			<p5></p5>
+			<p4759></p4759>
+			<p4758></p4758>
 			<p4></p4>
+			<p3759></p3759>
+			<p3758></p3758>
 			<p3></p3>
-			<p2>-50.01</p2>
+			<p2759>9.9</p2759>
+			<p2758>10</p2758>
+			<p2>9.99</p2>
+			<p1759>9.9</p1759>
+			<p1758>10</p1758>
+			<p10759></p10759>
+			<p10758></p10758>
 			<p10></p10>
-			<p1>10.01</p1>
-			<Startt>-6.2</Startt>
+			<p1>9.97</p1>
+			<Startt759>-100</Startt759>
+			<Startt758>0</Startt758>
+			<Startt>0</Startt>
 			<Showequation>true</Showequation>
 			<Fontsize>14</Fontsize>
 			<Font>Amazone BT</Font>
-			<Equationy>9*cos(p1*t)^2*sin(sin(p2*t))</Equationy>
-			<Equationx>10*sin(p1*t)*round(sqrt(cos(cos(p2*t))))</Equationx>
-			<Endt>6.2</Endt>
+			<Equationy>9*cos(p1*t)^2*sin(p2*t)</Equationy>
+			<Equationx>10*sin(p1*t)*(cos(cos(p2*t)))</Equationx>
+			<Endt759>0</Endt759>
+			<Endt758>100</Endt758>
+			<Endt>50</Endt>
 		</Functionparameters>
 	</ParametricEquationsShapeGenerator>
 </config>

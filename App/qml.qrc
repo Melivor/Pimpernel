@@ -79,5 +79,27 @@
         <file>Examples/ParametricEquationsShapeGenerator/Voluptis.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/Voluptis.xml</file>
         <file>SplashScreen.qml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Cyclic curve.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Cyclic curve.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Fold spiral.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Fold spiral.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Pimpernel.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Pimpernel.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Pink clematis.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Pink Clematis.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Soul mates.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Soul mates.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spacetime travel.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spacetime travel.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spin.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spin.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spring spiral.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Spring spiral.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/Test.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/The thing.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/The thing.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/The Unknown.png</file>
+        <file>Examples/ParametricEquationsShapeGenerator/The Unknown.xml</file>
+        <file>Examples/ParametricEquationsShapeGenerator/tobedeleted.png</file>
     </qresource>
 </RCC>

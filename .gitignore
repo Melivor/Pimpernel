@@ -1,2 +1,3 @@
 Pimpernel.pro.user*
-installer/packages/*
+installer/Windows x64/packages/*
+installer/Windows x86/packages/*
