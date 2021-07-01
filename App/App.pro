@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
+    parametricequationanimator.cpp \
         wallpapergenerator.cpp \
         parametricequation.cpp \
         parametricequationshapegenerator.cpp \
@@ -51,6 +52,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 HEADERS += \
+    parametricequationanimator.h \
     wallpapergenerator.h\
     parametricequation.h \
     parametricequationshapegenerator.h \

@@ -11,7 +11,7 @@ WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* protot
         qDebug()<<__PRETTY_FUNCTION__<<": is empty!";
         QDir dir(":/Examples/"+activeModel()->root());
         QStringList strList=dir.entryList();
-        for(auto str:strList){
+        for(const auto &str:strList){
             //if(!QFile::exists(path()+str)){
                 QFile::copy(dir.path()+"/"+str,path()+str);
             //}

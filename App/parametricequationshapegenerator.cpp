@@ -18,10 +18,15 @@ ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSett
     if(yEquationItem){
         yEquationItem->setEquation(&m_yEquation);
     }
-
+    connect(this, &StandardItemModelExplorer::activeSelectionChanged, this, &ParametricEquationsShapeGeneratorSettings::resetAnimator);
+    m_animator.reset(new ParametricEquationAnimator(this));
+    //resetAnimator();
 }
 
-
+void ParametricEquationsShapeGeneratorSettings::resetAnimator()
+{
+    m_animator->setParameters();
+}
 StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupPrototype()
 {
     StandardItemModel* mainModel=new StandardItemModel("ParametricEquationsShapeGenerator","ParametricEquationsShapeGenerator");
@@ -73,6 +78,9 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
     auto equationFont=new StandardItem(QObject::tr("Font"), 0,"TextField.qml",0,tr("Font to use for equation"));
     auto equationFontSize=new StandardItem(QObject::tr("Font size"), 0,"NumberField.qml",0,tr("Font size to use for equation"));
     auto equationItemAction =[equationFont, equationFontSize](const QVariant& value, int role){
+        if(role!=Qt::DisplayRole){
+            return;
+        }
         if(value.toBool()){
             equationFont->setEnabled(true);
             equationFontSize->setEnabled(true);

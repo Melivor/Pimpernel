@@ -101,5 +101,6 @@
         <file>Examples/ParametricEquationsShapeGenerator/The Unknown.png</file>
         <file>Examples/ParametricEquationsShapeGenerator/The Unknown.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/tobedeleted.png</file>
+        <file>AnimateDialog.qml</file>
     </qresource>
 </RCC>

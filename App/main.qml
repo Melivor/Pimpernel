@@ -115,6 +115,11 @@ Window {
         property alias pngHeight: exportSettings.pngHeight
         property alias name: saveDialog.name
     }
+    AnimateDialog{
+        id:animateDialog
+        model:loader.item.settings.getAnimator()
+    }
+
     SaveDialog{
         id:saveDialog
         onAccepted:{
@@ -151,9 +156,11 @@ Window {
         anchors.leftMargin: rect.width
         property var item
 
+
         //Keys.onLeftPressed: console.log("move left")
         //  sourceComponent: Component{PolygonPainter{}}
     }
+
     Button{
           anchors.top: loader.top
           anchors.bottom: loader.bottom
@@ -169,6 +176,7 @@ Window {
           }
 
     }
+
     Rectangle{
         id:exampleListView
         height: 0
@@ -286,8 +294,18 @@ Window {
             anchors.top:painterChoice.bottom
             anchors.topMargin: 20
             anchors.bottomMargin: 10
-            anchors.bottom:saveButton.top
+            anchors.bottom:animateButton.top
             width: parent.width
+
+        }
+
+        Button{
+            id:animateButton
+            anchors.bottom: saveButton.top
+
+            width: parent.width
+            text:"Animate"
+            onClicked:animateDialog.open()
         }
 
         Button{
@@ -306,5 +324,25 @@ Window {
             onClicked:exportDialog.open()
         }
     }
+    Button{
+        id:startAnimationButton
+        anchors.top:parent.top
+        height:20
+        width: 100
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: rect.width/2
+        //anchors.verticalCenter: parent.verticalCenter
+        text:animator.isRunning?"Stop animation":"Start animation"
+        property var animator: loader.item.settings.getAnimator()
+        onClicked: animator.isRunning?animator.stopAnimation():animator.startAnimation(repeatCheckBox.checked)
+    }
+    CheckBox{
+        id:repeatCheckBox
+        anchors.left:startAnimationButton.right
+        anchors.top:parent.top
+        height:20
+        text:"Repeat ?"
+    }
+
     //}
 }

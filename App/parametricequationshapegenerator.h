@@ -2,26 +2,28 @@
 #define PARAMETRICEQUATIONSHAPEGENERATOR_H
 #include "wallpapergenerator.h"
 #include "parametricequation.h"
-
-
+#include "parametricequationanimator.h"
+class ParametricEquationAnimator;
 class ParametricEquationsShapeGeneratorSettings : public WallpaperGeneratorSettings
 {
+    Q_OBJECT
 public:
     ParametricEquationsShapeGeneratorSettings(QObject* parent=nullptr);
     StandardItemModel* setupPrototype();
     QPointF pt(double t);
     QString xEquation(){return "x="+m_xEquation.expression();}
     QString yEquation(){return "y="+m_yEquation.expression();}
-
+    Q_INVOKABLE QAbstractItemModel* getAnimator(){return m_animator.get();}
 private :
-
+    void resetAnimator();
     StandardItemModel* setupSpecificSection();
     StandardItemModel* setupStartValue();
     StandardItemModel* setupStandardSection();
     StandardItemModel* setupFunctionParameters();
-
+    std::unique_ptr<ParametricEquationAnimator> m_animator;
     ParametricEquation m_xEquation;
     ParametricEquation m_yEquation;
+
 
 };
 
