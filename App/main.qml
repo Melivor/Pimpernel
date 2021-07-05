@@ -1,11 +1,12 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls 2.12
-import "Style"
-import "qrc:/ItemView"
+import QtQuick.Controls 2.15
+
+
 import Qt.labs.settings 1.1
 import Qt.labs.platform 1.1
-Window {
+import "qrc:/import"
+ApplicationWindow {
     id:mainWindow
     visible: true
     visibility: Window.Maximized
@@ -13,15 +14,54 @@ Window {
     property bool fullScreen: false
     property bool showExample: false
     property bool showBar: false
-    //FocusScope{
-      //  anchors.fill:parent
 
+    //FocusScope{
+    //  anchors.fill:parent
+    property bool darkTheme:false
+    Pane{
+        anchors.fill:parent
+    }
+    Component.onCompleted:if(darkTheme){
+                              HorusTheme.accentColor="#be565b"
+                          }
+
+    function setDarkTheme(){
+        palette.text="#ffffff"
+        palette.windowText="#ffffff"
+        palette.buttonText="#ffffff"
+        palette.alternateBase="#474747"
+        palette.window="#353535"
+        palette.base="#292929"
+        palette.mid="#202020"
+        palette.button="#ff0000"
+        palette.light="#0000ff"
+        palette.midLight="#00ff00"
+        palette.highLight="#387F6B"
+        HorusTheme.accentColor="#be565b"
+        darkTheme=true
+    }
+    function setLightTheme(){
+        palette.text="#4b4b4b"
+        palette.windowText="#4b4b4b"
+        palette.buttonText="#4b4b4b"
+        palette.alternateBase="#fafafa"
+        palette.window="#f0f0f0"
+        palette.base="#ffffff"
+        palette.mid="#a0a0a0"
+        palette.button="#f0f0f0"
+        palette.light="#ffffff"
+        palette.midLight="#e3e3e3"
+        palette.highLight="#0078d7"
+
+        HorusTheme.accentColor=Qt.hsla(0,0,0.15,0.95)
+        darkTheme=false
+    }
 
     Timer{
         id:exampleTimer
         repeat: false
         onTriggered: if(mouseArea.mouseY<(mainWindow.height-150)){
-                          showExample=false
+                         showExample=false
                      }
                      else{
                          exampleTimer.restart()
@@ -37,7 +77,7 @@ Window {
             if(fullScreen && mouseArea.mouseX<15){
                 barTimer.restart()
             }
-            else if(!fullScreen && mouseArea.mouseX<415){
+            else if(!fullScreen && mouseArea.mouseX<rect.width+15){
                 barTimer.restart()
             }
             else{
@@ -48,15 +88,32 @@ Window {
         interval: 2000
         running: false
     }
+    Menu{
+        id:menu
+        MenuItem { text: darkTheme?"Set light theme":"Set dark theme"
+        onTriggered:darkTheme?setLightTheme():setDarkTheme()
+
+        }
+    }
 
     MouseArea{
         id:mouseArea
         anchors.fill:parent
         hoverEnabled: true
-        onMouseYChanged:{
-           // console.log(mouseY,"/",mainWindow.height-150)
+        acceptedButtons: Qt.RightButton
+        onClicked: {
+            console.log("Right button clicked", mouseX, "/",rect.width+15 )
+            if(!fullScreen && mouseX<rect.width+15){
+                console.log("Right button clicked in rithh")
+                menu.open(mouseX, mouseY)
+            }
 
-            if(mouseY>(mainWindow.height-150)){
+        }
+
+        onMouseYChanged:{
+            // console.log(mouseY,"/",mainWindow.height-150)
+
+            if(mouseY>(mainWindow.height-150) && (!fullScreen && mouseX>rect.width+15)){
                 exampleTimer.start()
                 showExample=true;
 
@@ -67,27 +124,27 @@ Window {
                 showBar=true
                 barTimer.start()
             }
-            else if(!fullScreen && mouseX<415){
+            else if(!fullScreen && mouseX<rect.width+15){
                 showBar=true
                 barTimer.start()
             }
-            if(focus === false && mouseX > 415){
+            if(focus === false && mouseX > rect.width+15){
                 focus=true
             }
         }
 
-       // onClicked:scope.focus=true
+        // onClicked:scope.focus=true
         Keys.onPressed:{
             console.log("Key pressed");
             if(event.key === Qt.Key_F5){
-                            if(visibility==Window.FullScreen){
-                                console.log("F5 pressed")
-                                visibility= Window.Maximized
-                            }
-                            else{
-                                visibility=Window.FullScreen
-                            }
-                        }
+                if(visibility==Window.FullScreen){
+                    console.log("F5 pressed")
+                    visibility= Window.Maximized
+                }
+                else{
+                    visibility=Window.FullScreen
+                }
+            }
             if(event.key === Qt.Key_Escape){
                 visibility= Window.Maximized
             }
@@ -104,16 +161,19 @@ Window {
         }
     }
 
-    HorusTheme{
-        id:horusTheme
-    }
+
     Settings{
         id:settings
         property url folder:value("folder", StandardPaths.DocumentsLocation)
-        property alias currentIndex: painterChoice.currentIndex
+        //property alias currentIndex: painterChoice.currentIndex
         property alias pngWidth: exportSettings.pngWidth
         property alias pngHeight: exportSettings.pngHeight
         property alias name: saveDialog.name
+        property alias settingsViewWidth: rect.unfoldWidth
+        property alias palette: mainWindow.palette
+        property alias darkTheme: mainWindow.darkTheme
+        //property alias accentColor: HorusTheme.accentColor
+        // property alias name: value
     }
     AnimateDialog{
         id:animateDialog
@@ -131,8 +191,6 @@ Window {
     ExportDialog{
         id:exportDialog
         folder: settings.folder
-
-       // y:mainWindow.height/2-height/2
         onAccepted:{
             exportSettings.open()
             settings.setValue("folder", folder)
@@ -141,208 +199,62 @@ Window {
     }
     ExportSettingsDialog{
         id:exportSettings
-        //x:parent.width/2-width/2
-        //y:parent.height/2-height/2
         onAccepted: {
             loader.item.saveAsPng(exportDialog.fileUrl, pngWidth, pngHeight)
             close()
         }
     }
-
-
     Item{
         id:loader
         anchors.fill:parent
         anchors.leftMargin: rect.width
         property var item
-
-
-        //Keys.onLeftPressed: console.log("move left")
-        //  sourceComponent: Component{PolygonPainter{}}
     }
-
-    Button{
-          anchors.top: loader.top
-          anchors.bottom: loader.bottom
-
-          anchors.left:loader.left
-          opacity: 1
-          width: 15
-          text:fullScreen?">":"<"
-          visible: showBar
-          onClicked: {
-
-              fullScreen=!fullScreen
-          }
-
-    }
-
-    Rectangle{
+    ExamplesView{
         id:exampleListView
-        height: 0
-       // visible: showExample
-        anchors.bottom: parent.bottom
-        anchors.right:parent.right
-        anchors.left:rect.right
-        NumberAnimation on height {
-                running: showExample
-                from: 0; to: 150
-            }
-        NumberAnimation on height {
-                running: !showExample
-                from: 150; to: 0
-            }
-        transitions: Transition {
-                PropertyAnimation { property: "height"; duration: 1000 }
-            }
-        ListView{
-            id:listView
-            width: parent.width
-            height: parent.height
-            clip:true
 
-            delegate: Rectangle{
-                implicitHeight: 150
-                implicitWidth: visible?250:0
-                enabled: visible
-
-                visible: display!==loader.item.settings.activeModel.root // && loader.item.settings.activeModel.name!==display
-                Image{
-                    id:image
-                    anchors.fill:parent
-                    source:parent.visible?loader.item.pngPath(display):""
-                    //source:loader.item.pngPath()+display+".png"
-                }
-
-                Text{
-                    anchors.centerIn: parent
-                    text:display
-//                    Component.onCompleted: {
-//                        var str=loader.item.pngPath(display)
-//                        console.log("Data: ",str, loader.item.settings.activeModel.root)
-//                        image.source=str
-//                    }
-                }
-                MouseArea{
-                    anchors.fill:parent
-                    acceptedButtons: Qt.LeftButton | Qt.RightButton
-                    Menu {
-                        id: contextMenuObject
-                        MenuItem { text: qsTr("Delete")
-                            onTriggered: loader.item.settings.deleteProfilSettings(display)
-                        }
-                    }
-                    onClicked: {
-                        if(mouse.button & Qt.RightButton) {
-                            contextMenuObject.open(mouseX, mouseY)
-                        }
-                        else{
-                            loader.item.settings.copyProfilSettings(display, false)
-                            listView.currentIndex=index
-                        }
-
-
-                    }
-
-                }
-            }
-            model:loader.item.settings
-            orientation: ListView.Horizontal
-        }
     }
 
-    Rectangle{
+
+
+    SettingsView
+    {
         id:rect
-        visible: fullScreen?false:true
-        width: fullScreen?0:400
-        anchors.left: parent.left
-        height: parent.height
-        color:horusTheme.backgroundColor
-        border.color: horusTheme.borderColor
-        opacity: 0.75
 
-
-        ComboBox{
-            id:painterChoice
-            model:painterList
-            textRole:"name"
-            property int previousIndex: 0
-            anchors.top:parent.top
-            anchors.topMargin: 0
-            width: parent.width
-            Component.onCompleted: {
-
-                painterList[currentIndex].init()
-                loader.item=painterList[currentIndex].item()
-                painterList[currentIndex].item().parent=loader
-                loader.item.anchors.fill=loader
-                settingsView.model=painterList[currentIndex].item().settings.activeModel
-            }
-            onCurrentIndexChanged: {
-                painterList[previousIndex].release()
-                painterList[currentIndex].init()
-                //console.log("current is",painterList[currentIndex] )
-                loader.item=painterList[currentIndex].item()
-                painterList[currentIndex].item().parent=loader
-                loader.item.anchors.fill=loader
-                settingsView.model=painterList[currentIndex].item().settings.activeModel
-            }
-        }
-
-        ItemListViewBySection{
-            id:settingsView
-            anchors.top:painterChoice.bottom
-            anchors.topMargin: 20
-            anchors.bottomMargin: 10
-            anchors.bottom:animateButton.top
-            width: parent.width
-
-        }
-
-        Button{
-            id:animateButton
-            anchors.bottom: saveButton.top
-
-            width: parent.width
-            text:"Animate"
-            onClicked:animateDialog.open()
-        }
-
-        Button{
-            id:saveButton
-            anchors.bottom: exportButton.top
-            width: parent.width
-            text:"Save"
-            onClicked:saveDialog.open()
-        }
-
-        Button{
-            id:exportButton
-            anchors.bottom: parent.bottom
-            width: parent.width
-            text:"Export..."
-            onClicked:exportDialog.open()
-        }
     }
+
     Button{
-        id:startAnimationButton
-        anchors.top:parent.top
-        height:20
-        width: 100
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: rect.width/2
-        //anchors.verticalCenter: parent.verticalCenter
-        text:animator.isRunning?"Stop animation":"Start animation"
-        property var animator: loader.item.settings.getAnimator()
-        onClicked: animator.isRunning?animator.stopAnimation():animator.startAnimation(repeatCheckBox.checked)
+        anchors.top: loader.top
+        anchors.bottom: loader.bottom
+
+        anchors.left:rect.right
+        opacity: 1
+        width: 15
+        text:fullScreen?">":"<"
+        visible: showBar
+        onClicked: {
+
+            fullScreen=!fullScreen
+        }
+        MouseArea{
+            anchors.left:parent.left
+            anchors.top:parent.top
+            anchors.bottom: parent.bottom
+            width: 5
+            cursorShape: Qt.SplitHCursor
+            hoverEnabled: true
+            property real mouseLastX
+            onClicked: mouseLastX=mouseX
+            onMouseXChanged: if(pressed){
+                                 rect.unfoldWidth-=(mouseLastX-mouseX)                                //rect.width=rect.width-(mouseLastX-mouseX)
+                                 //mouseLastX=mouseX
+                             }
+        }
+
     }
-    CheckBox{
-        id:repeatCheckBox
-        anchors.left:startAnimationButton.right
-        anchors.top:parent.top
-        height:20
-        text:"Repeat ?"
-    }
+    //}
+
+
 
     //}
 }

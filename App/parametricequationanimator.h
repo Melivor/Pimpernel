@@ -20,7 +20,7 @@ public:
     };
     explicit ParametricEquationAnimator(ParametricEquationsShapeGeneratorSettings* pESGenerator, QObject *parent = nullptr);
     virtual QHash<int,QByteArray> roleNames() const override;
-    Q_INVOKABLE void startAnimation(bool loop=true);
+    Q_INVOKABLE void startAnimation();
     Q_INVOKABLE void stopAnimation();
     void setParameters();
     bool isRunning(){return m_timer!=nullptr;}

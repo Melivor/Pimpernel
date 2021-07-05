@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "parametricequationshapegenerator.h"
 #include <QQmlContext>
+#include <QQuickStyle>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -10,6 +11,9 @@ int main(int argc, char *argv[])
     app.setOrganizationName("2ms");
     app.setOrganizationDomain("2ms.tech");
     app.setApplicationName("Pimpernel");
+    //QQuickStyle::addStylePath("../qqc2-suru-style/qml/QtQuick/Controls.2/Suru");
+    //QQuickStyle::setStyle("qqc2-suru");
+    qDebug()<<"Availbale styles: "<<QQuickStyle::availableStyles();
     QQmlApplicationEngine* splashEngine=new QQmlApplicationEngine();
     splashEngine->load("qrc:/SplashScreen.qml");
     QObject* object=splashEngine->rootObjects().front();

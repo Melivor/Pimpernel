@@ -1,5 +1,6 @@
 QT += quick \
     widgets \
+    quickcontrols2
 
 RC_ICONS = icon.ico
 CONFIG += c++17
@@ -33,10 +34,12 @@ SOURCES += \
 RESOURCES += qml.qrc \
              $$PWD/../HorusStyle/horusStyle.qrc \
              $$PWD/../ItemView/itemView.qrc \
+             qtquickcontrols2.conf \
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/../HorusStyle/import/
-
+QML_IMPORT_PATH +=  $$PWD/../qqc2-suru-style/qqc2-suru/
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
 

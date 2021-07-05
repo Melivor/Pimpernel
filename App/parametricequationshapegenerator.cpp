@@ -34,6 +34,7 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupPrototype()
     mainModel->appendSection(setupStartValue());
     mainModel->appendSection(setupFunctionParameters());
     mainModel->appendSection(setupSpecificSection());
+    mainModel->appendSection(setupAnimationParameters());
     return mainModel;
 }
 
@@ -129,6 +130,15 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
     }
     return model;
 }
+
+StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupAnimationParameters()
+{
+    StandardItemModel* model=new StandardItemModel("Animation");
+    model->appendRow(new StandardItem(QObject::tr("Set parameters"),0,"AnimationButton.qml"));
+    model->appendRow(new StandardItem(QObject::tr("Run in loop"),0,"CheckBox.qml",0,QObject::tr("Start position x"),QObject::tr(""),0,1));
+    return model;
+}
+
 
 QPointF ParametricEquationsShapeGeneratorSettings::pt(double t)
 {

@@ -20,6 +20,7 @@ private :
     StandardItemModel* setupStartValue();
     StandardItemModel* setupStandardSection();
     StandardItemModel* setupFunctionParameters();
+    StandardItemModel* setupAnimationParameters();
     std::unique_ptr<ParametricEquationAnimator> m_animator;
     ParametricEquation m_xEquation;
     ParametricEquation m_yEquation;

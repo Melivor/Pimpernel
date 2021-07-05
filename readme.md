@@ -6,6 +6,6 @@ You are likely to get a Windows warning (Windows protected your PC blablabla...)
 The application take approximatively 130Mo.
 ## Source code 
 The software is coded using Qt 5 (with QML and C++). You are very welcome to open the project in Qt Creator (open the file Pimpernel.pro) and start play with it. You will need the submodule in order to make it work. It can be achieve with the following git command :
-+git clone https://github.com/Melivor/Pimpernel
-+git submodule init
-+git submodule update
++ git clone https://github.com/Melivor/Pimpernel
++ git submodule init
++ git submodule update

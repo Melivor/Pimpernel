@@ -1,8 +1,7 @@
 TEMPLATE = subdirs
 SUBDIRS += StandardItemModel \
            App \
-           muparser \
+           muparser
 
- 
+
  App.depends = StandardItemModel muparser
-

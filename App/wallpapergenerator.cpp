@@ -8,7 +8,7 @@ WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* protot
 
     getModelList();
     if(rowCount()<2){
-        qDebug()<<__PRETTY_FUNCTION__<<": is empty!";
+        //qDebug()<<__PRETTY_FUNCTION__<<": is empty!";
         QDir dir(":/Examples/"+activeModel()->root());
         QStringList strList=dir.entryList();
         for(const auto &str:strList){

@@ -1,18 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Style/Button.qml</file>
-        <file>Style/CheckBox.qml</file>
-        <file>Style/ComboBox.qml</file>
-        <file>Style/Dialog.qml</file>
-        <file>Style/HorusTheme.qml</file>
-        <file>Style/ProgressBar.qml</file>
-        <file>Style/RadioButton.qml</file>
-        <file>Style/Slider.qml</file>
-        <file>Style/SplitView.qml</file>
-        <file>Style/TabButton.qml</file>
-        <file>Style/Text.qml</file>
-        <file>Style/TextField.qml</file>
         <file>splash.png</file>
         <file>HorusGrey.png</file>
         <file>ExportDialog.qml</file>
@@ -102,5 +90,8 @@
         <file>Examples/ParametricEquationsShapeGenerator/The Unknown.xml</file>
         <file>Examples/ParametricEquationsShapeGenerator/tobedeleted.png</file>
         <file>AnimateDialog.qml</file>
+        <file>ExamplesView.qml</file>
+        <file>SettingsView.qml</file>
+        <file>ItemView/Items/AnimationButton.qml</file>
     </qresource>
 </RCC>
