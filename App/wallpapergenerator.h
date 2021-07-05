@@ -31,7 +31,9 @@ public:
     void paint(QPainter* painter) override;
     WallpaperGeneratorSettings* settings(){return m_settings;}
     void redraw(){update();}
+    Q_INVOKABLE void saveAsPicture(QUrl url, int width=1920, int height=1080);
     Q_INVOKABLE void saveAsPng(QUrl url, int width=1920, int height=1080);
+    Q_INVOKABLE void saveAsSvg(QUrl url, int width=1920, int height=1080);
     Q_INVOKABLE void save(const QString& name);
     Q_INVOKABLE QUrl pngPath(QString name){QString path=m_settings->path(); path+=name; path+=".png";QUrl url =QUrl::fromLocalFile(path); return url;}
 protected:

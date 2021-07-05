@@ -7,7 +7,7 @@ FileDialog {
 
     id: fileDialog
     title: qsTr("Please choose a file")
-     nameFilters: [ "Png files (*.png)" ]
+     nameFilters: [ "Png files (*.png)", "Svg files (*.svg)" ]
      selectExisting: false
 
      //property var urls

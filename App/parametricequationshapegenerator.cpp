@@ -8,6 +8,7 @@
 #include <QElapsedTimer>
 #include <standarditemwithactions.h>
 
+
 ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSettings(QObject* parent) : WallpaperGeneratorSettings(setupPrototype(), parent)
 {
     auto xEquationItem=reinterpret_cast<ParametricEquationItem*>(item("Equation x"));

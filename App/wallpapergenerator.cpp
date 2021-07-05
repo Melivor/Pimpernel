@@ -2,6 +2,7 @@
 #include <QImageWriter>
 #include <QPainter>
 #include <QDir>
+#include <QSvgGenerator>
 
 WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* prototype, QObject* parent):StandardItemModelExplorer(prototype, parent)
 {
@@ -13,7 +14,7 @@ WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* protot
         QStringList strList=dir.entryList();
         for(const auto &str:strList){
             //if(!QFile::exists(path()+str)){
-                QFile::copy(dir.path()+"/"+str,path()+str);
+            QFile::copy(dir.path()+"/"+str,path()+str);
             //}
         }
         getModelList();
@@ -60,11 +61,22 @@ void WallpaperGenerator::save(const QString& name)
 
 }
 
+void WallpaperGenerator::saveAsPicture(QUrl url, int width, int height)
+{
+    QFileInfo fileInfo(url.toLocalFile());
+    if(fileInfo.suffix()=="png"){
+        saveAsPng(url, width, height);
+    }
+    else if(fileInfo.suffix()=="svg"){
+        saveAsSvg(url, width, height);
+    }
+    return;
+}
 void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
 {
 
     QImage image(width, height, QImage::Format_ARGB32);
-        image.fill(QColor(m_settings->backgroundColor()));
+    image.fill(QColor(m_settings->backgroundColor()));
 
     QPainter painter;
     painter.begin(&image);
@@ -77,4 +89,26 @@ void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
     if(!writer.write(image)){
         qWarning()<<writer.errorString();
     }
+}
+
+void WallpaperGenerator::saveAsSvg(QUrl url, int width, int height)
+{
+
+    QSvgGenerator generator;
+    generator.setFileName(url.toLocalFile());
+    generator.setSize(QSize(width, height));
+    generator.setViewBox(QRect(0, 0, width, height));
+    generator.setTitle(tr("SVG Generator Example Drawing"));
+    generator.setDescription(tr("An SVG drawing created by the SVG Generator "
+                                    "Example provided with Qt."));
+
+
+    QImage image(width, height, QImage::Format_ARGB32);
+    image.fill(QColor(m_settings->backgroundColor()));
+    QPainter painter;
+    painter.begin(&generator);
+    double scale=std::min(image.width()/this->width(), image.height()/this->height());
+    painter.scale(scale, scale);
+    paint(&painter, image.width()/scale, image.height()/scale);
+    painter.end();
 }

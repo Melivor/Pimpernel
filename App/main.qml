@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-
+import QtQuick.Controls.Styles 1.4
 
 import Qt.labs.settings 1.1
 import Qt.labs.platform 1.1
@@ -18,11 +18,13 @@ ApplicationWindow {
     //FocusScope{
     //  anchors.fill:parent
     property bool darkTheme:false
+
     Pane{
         anchors.fill:parent
     }
     Component.onCompleted:if(darkTheme){
                               HorusTheme.accentColor="#be565b"
+
                           }
 
     function setDarkTheme(){
@@ -200,7 +202,7 @@ ApplicationWindow {
     ExportSettingsDialog{
         id:exportSettings
         onAccepted: {
-            loader.item.saveAsPng(exportDialog.fileUrl, pngWidth, pngHeight)
+            loader.item.saveAsPicture(exportDialog.fileUrl, pngWidth, pngHeight)
             close()
         }
     }
