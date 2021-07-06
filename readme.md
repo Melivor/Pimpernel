@@ -9,3 +9,6 @@ The software is coded using Qt 5 (with QML and C++). You are very welcome to ope
 + git clone https://github.com/Melivor/Pimpernel
 + git submodule init
 + git submodule update
+
+## Overview
+![alt text](https://github.com/Melivor/Pimpernel/blob/main/Overview.PNG?raw=true)
