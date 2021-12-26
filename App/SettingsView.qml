@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import "qrc:/ItemView"
 import Qt.labs.settings 1.1
 import "qrc:/import"
+import painterList 1.0
 Rectangle{
     id:rect
     visible: fullScreen?false:true
@@ -22,28 +23,29 @@ Rectangle{
     }
     ComboBox{
         id:painterChoice
-        model:painterList
+        model:PainterList.generators
         textRole:"name"
         property int previousIndex: 0
         anchors.top:parent.top
         anchors.topMargin: 0
         width: parent.width
-        Component.onCompleted: {
+        function loadItem(){
+            model[currentIndex].init()
+            if(model.length>currentIndex){
+                loader.item=model[currentIndex].item()
+                model[currentIndex].item().parent=loader
+                model[currentIndex].item().anchors.fill=loader
+                settingsView.model=model[currentIndex].item().settings.activeModel
+            }
+        }
 
-            painterList[currentIndex].init()
-            loader.item=painterList[currentIndex].item()
-            painterList[currentIndex].item().parent=loader
-            loader.item.anchors.fill=loader
-            settingsView.model=painterList[currentIndex].item().settings.activeModel
+        Component.onCompleted: {
+            loadItem()
         }
         onCurrentIndexChanged: {
-            painterList[previousIndex].release()
-            painterList[currentIndex].init()
-            //console.log("current is",painterList[currentIndex] )
-            loader.item=painterList[currentIndex].item()
-            painterList[currentIndex].item().parent=loader
-            loader.item.anchors.fill=loader
-            settingsView.model=painterList[currentIndex].item().settings.activeModel
+            model[previousIndex].release()
+            loadItem()
+
         }
     }
 

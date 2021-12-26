@@ -16,9 +16,12 @@ public:
     ParametricEquation();
     ~ParametricEquation();
     static double rnd(double x);
+    void defineVar(const QString& varName, double* var){m_parser.DefineVar(varName.toStdWString(),var);};
+    void clearVar(){m_parser.ClearVar();}
     bool setExpression(const QString& expression);
     bool checkError();
-    double value(double t);
+    double value();
+    //double value(QList<double> variables);
     std::vector<double> mupValue(double mint, double maxt, double step);
     bool isError();
     void setError(bool isError);
@@ -31,7 +34,6 @@ private:
     //exprtk::expression<double> m_expressionY;
     //exprtk::symbol_table<double> m_symbolTable;
     mu::Parser m_parser;
-    double m_t;
     bool m_isError;
     QString m_errorString;
     QList<double*> m_parameters;

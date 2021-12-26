@@ -14,6 +14,7 @@ public:
     QString xEquation(){return "x="+m_xEquation.expression();}
     QString yEquation(){return "y="+m_yEquation.expression();}
     Q_INVOKABLE QAbstractItemModel* getAnimator(){return m_animator.get();}
+
 private :
     void resetAnimator();
     StandardItemModel* setupSpecificSection();
@@ -24,6 +25,7 @@ private :
     std::unique_ptr<ParametricEquationAnimator> m_animator;
     ParametricEquation m_xEquation;
     ParametricEquation m_yEquation;
+    double m_t;
 
 
 };
@@ -34,12 +36,14 @@ public:
     ParametricEquationsShapeGenerator(QQuickItem* parent=nullptr);
     virtual void paint(QPainter* painter, double width, double height) override;
 private:
-    void drawLegend(QPainter *painter, double width);
+    void drawLegend(QPainter *painter, double width, double height);
 };
 
 class MetaParametricEquationsShapeGenerator : public MetaGenerator{
+public:
+    MetaParametricEquationsShapeGenerator(QObject* parent=nullptr):MetaGenerator(parent){}
     const QString name() override{return "Parametric equations shape generator";}
-    void init() override {if(m_item!=nullptr)return; else m_item=new ParametricEquationsShapeGenerator();}
+    void init() override {m_item.reset(new ParametricEquationsShapeGenerator());}
 };
 
 #endif // PARAMETRICEQUATIONSHAPEGENERATOR_H

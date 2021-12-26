@@ -112,3 +112,11 @@ void WallpaperGenerator::saveAsSvg(QUrl url, int width, int height)
     paint(&painter, image.width()/scale, image.height()/scale);
     painter.end();
 }
+
+ListOfGenerator::ListOfGenerator(QList<QObject*> generator)
+{
+    m_generators=generator;
+    for(auto&& gen:m_generators){
+        gen->setParent(this);
+    }
+}

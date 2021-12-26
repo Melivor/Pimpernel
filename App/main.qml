@@ -6,6 +6,7 @@ import QtQuick.Controls.Styles 1.4
 import Qt.labs.settings 1.1
 import Qt.labs.platform 1.1
 import "qrc:/import"
+
 ApplicationWindow {
     id:mainWindow
     visible: true
@@ -14,7 +15,6 @@ ApplicationWindow {
     property bool fullScreen: false
     property bool showExample: false
     property bool showBar: false
-
     //FocusScope{
     //  anchors.fill:parent
     property bool darkTheme:false

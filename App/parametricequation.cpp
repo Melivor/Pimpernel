@@ -10,9 +10,7 @@ double ParametricEquation::rnd(double x)
 }
 ParametricEquation::ParametricEquation()
 {
-    QString parameter="t";
     QString functionName="round";
-    m_parser.DefineVar(parameter.toStdWString(), &m_t);
     m_parser.DefineFun(functionName.toStdWString(), &ParametricEquation::rnd, false);
     setExpression("3*t");
 }
@@ -122,7 +120,7 @@ void ParametricEquationParameterItem::setData(const QVariant &value, int role)
 {
     if(role==Qt::DisplayRole){
 
-        for(auto equation : m_equations){
+        for(auto equation : qAsConst(m_equations)){
             equation->setParameter(m_index-1, value.toDouble());
         }
         {
@@ -150,7 +148,7 @@ void ParametricEquationParameterItem::setData(const QVariant &value, int role)
 
 ParametricEquation::~ParametricEquation()
 {
-    for(auto p:m_parameters){
+    for(auto p:qAsConst(m_parameters)){
         delete p;
     }
 }
@@ -184,17 +182,15 @@ bool ParametricEquation::setExpression(const QString& expression)
 
 bool ParametricEquation::checkError()
 {
-    value(0);
+    value();
     return isError();
 }
 
-double ParametricEquation::value(double t)
+double ParametricEquation::value()
 {
     if(isError()){
         return 0;
     }
-
-    m_t=t;
     double x=0;
     try{
 

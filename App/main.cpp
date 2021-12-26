@@ -1,13 +1,26 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include "parametricequationshapegenerator.h"
+#include "chemicalreactionsimulator.h"
 #include <QQmlContext>
 #include <QQuickStyle>
+static QObject *singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    ListOfGenerator *singleton = new ListOfGenerator({
+                                                        new MetaParametricEquationsShapeGenerator(),
+                                                        new MetaChemicalReactionSimulator()
+                                                    });
+    return singleton;
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     app.setOrganizationName("2ms");
     app.setOrganizationDomain("2ms.tech");
     app.setApplicationName("Pimpernel");
@@ -26,17 +39,31 @@ int main(int argc, char *argv[])
 //        new MetaPolygonPainter(),
 //        new MetaPolygonPainter2(),
 //    };
-        QList<QObject*> painterList= {
-            new MetaParametricEquationsShapeGenerator(),
-        };
+    // auto metaParametricEquation=MetaParametricEquationsShapeGenerator(&app);
+//        QList<QObject*> painterList= {
+//            new MetaParametricEquationsShapeGenerator(),
+//            new MetaChemicalReactionSimulator()
+//        };
+    /*
+   QScopedPointer<ListOfGenerator> listOfGenerator(new ListOfGenerator({
+                        new MetaParametricEquationsShapeGenerator(),
+                        new MetaChemicalReactionSimulator()
+                    }));
+                    */
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("painterList", QVariant::fromValue(painterList));
     const QUrl url(QStringLiteral("qrc:/main.qml"));
+
+    qmlRegisterSingletonType<ListOfGenerator>("painterList",1,0,"PainterList", singletontype_provider);
+    /*
+    engine.rootContext()->setContextProperty("painterList", QVariant::fromValue(painterList));
+    */
+
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+
     engine.load(url);
 
     return app.exec();

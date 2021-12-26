@@ -11,8 +11,11 @@
 
 ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSettings(QObject* parent) : WallpaperGeneratorSettings(setupPrototype(), parent)
 {
+    m_xEquation.defineVar("t", &m_t);
+    m_yEquation.defineVar("t", &m_t);
     auto xEquationItem=reinterpret_cast<ParametricEquationItem*>(item("Equation x"));
     if(xEquationItem){
+
         xEquationItem->setEquation(&m_xEquation);
     }
     auto yEquationItem=reinterpret_cast<ParametricEquationItem*>(item("Equation y"));
@@ -78,24 +81,28 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
     //model->appendRow(new StandardItem(QObject::tr("Show equation"), true,"CheckBox.qml",0,tr("Show equation ?")));
     auto showEquationField=new StandardItemWithActions(QObject::tr("Show equation"), true,"CheckBox.qml",0,tr("Show equation ?"));
     auto equationFont=new StandardItem(QObject::tr("Font"), 0,"TextField.qml",0,tr("Font to use for equation"));
+    auto equationPosition=new StandardItem(QObject::tr("Equation position"), 0,"ComboBox.qml",0,tr("Position for display equation"),"","","",{"Bottom right", "Top right", "Bottom left", "Top left"});
     auto equationFontSize=new StandardItem(QObject::tr("Font size"), 0,"NumberField.qml",0,tr("Font size to use for equation"));
-    auto equationItemAction =[equationFont, equationFontSize](const QVariant& value, int role){
+    auto equationItemAction =[equationFont, equationFontSize, equationPosition](const QVariant& value, int role){
         if(role!=Qt::DisplayRole){
             return;
         }
         if(value.toBool()){
             equationFont->setEnabled(true);
             equationFontSize->setEnabled(true);
+            equationPosition->setEnabled(true);
         }
         else{
             equationFont->setEnabled(false);
             equationFontSize->setEnabled(false);
+            equationPosition->setEnabled(false);
         }
     };
     showEquationField->addAction(equationItemAction);
     model->appendRow(showEquationField);
     model->appendRow(equationFont);
     model->appendRow(equationFontSize);
+    model->appendRow(equationPosition);
     equationFont->setData("Segoe Script");
     equationFontSize->setData(12);
     auto startT=new StandardItem(QObject::tr("Start t"),0,"SliderMinMax.qml",-6,QObject::tr("Start value for t"),QObject::tr(""),-200,200);
@@ -110,23 +117,23 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupFunctionParam
         pItem->setData(QVariantList({StandardItemModel::MinRole, StandardItemModel::MaxRole}),StandardItemModel::RolesTobeSaved);
         /* hack to keep save min and max */
 
-      //  auto maxItem=new StandardItemWithActions("p"+QString::number(i)+"max");
+        //  auto maxItem=new StandardItemWithActions("p"+QString::number(i)+"max");
 
-      //  maxItem->addAction(itemMaxAction);
-       // auto minItem=new StandardItemWithActions("p"+QString::number(i)+"max");
+        //  maxItem->addAction(itemMaxAction);
+        // auto minItem=new StandardItemWithActions("p"+QString::number(i)+"max");
 
 
-      //  minItem->addAction(itemMinAction);
-       // pItem->setMaxItem(maxItem);
+        //  minItem->addAction(itemMinAction);
+        // pItem->setMaxItem(maxItem);
         //pItem->setMinItem(minItem);
 
         xEquationItem->addParameterItem(pItem);
         yEquationItem->addParameterItem(pItem);
         model->appendRow(pItem);
         //model->appendRow(minItem);
-         //model->appendRow(maxItem);
+        //model->appendRow(maxItem);
         pItem->setEnabled(false);
-       // minItem->setEnabled(false);
+        // minItem->setEnabled(false);
         //maxItem->setEnabled(false);
     }
     return model;
@@ -143,13 +150,14 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupAnimationPara
 
 QPointF ParametricEquationsShapeGeneratorSettings::pt(double t)
 {
-     return QPointF(m_xEquation.value(t)*getActiveData("Scale").toDouble(), m_yEquation.value(t)*getActiveData("Scale").toDouble());
+    m_t=t;
+    return QPointF(m_xEquation.value()*getActiveData("Scale").toDouble(), m_yEquation.value()*getActiveData("Scale").toDouble());
 }
 
 ParametricEquationsShapeGenerator::ParametricEquationsShapeGenerator(QQuickItem *parent):WallpaperGenerator(parent)
 {
-   auto settings=new ParametricEquationsShapeGeneratorSettings(this);
-   m_settings=settings;
+    auto settings=new ParametricEquationsShapeGeneratorSettings(this);
+    m_settings=settings;
     connect(m_settings->activeModel()->sections()[0],&StandardItemModel::dataChanged, this, &WallpaperGenerator::redraw);
     connect(m_settings->activeModel()->sections()[1],&StandardItemModel::dataChanged, this, &ParametricEquationsShapeGenerator::redraw);
     connect(m_settings->activeModel()->sections()[2],&StandardItemModel::dataChanged, this, &ParametricEquationsShapeGenerator::redraw);
@@ -171,7 +179,7 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
     if(m_settings->getActiveData("Show equation").toBool()){
-        drawLegend(painter, width);
+        drawLegend(painter, width, height);
     }
     double h;
     double s;
@@ -200,6 +208,7 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
     int maxCount=m_settings->getActiveData("Pt number").toInt();
     auto settings=reinterpret_cast<ParametricEquationsShapeGeneratorSettings*>(m_settings);
     while(count<maxCount){
+        //settings->setT(t);
         polygon.append(settings->pt(t));
         t+=step;
         ++count;
@@ -211,15 +220,15 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
             painter->setPen(pen);
             ++i;
         }
-         angle+=angleStep;
-         painter->rotate(angleStep);
+        angle+=angleStep;
+        painter->rotate(angleStep);
 
-         painter->drawPolyline(polygon);
+        painter->drawPolyline(polygon);
     }
 }
 
 
-void ParametricEquationsShapeGenerator::drawLegend(QPainter* painter, double width)
+void ParametricEquationsShapeGenerator::drawLegend(QPainter* painter, double width, double height)
 {
     QFont font=painter->font();
     font.setFamily(m_settings->getActiveData("Font").toString());
@@ -232,14 +241,49 @@ void ParametricEquationsShapeGenerator::drawLegend(QPainter* painter, double wid
     legends.push_back(settings->yEquation());
     legends.push_back(QString::number(m_settings->getActiveData("Start t").toDouble())+"<t<"+QString::number(m_settings->getActiveData("End t").toDouble())+", N="+QString::number(m_settings->getActiveData("Pt number").toInt()));
     legends.push_back(QString::number(m_settings->getActiveData("Rotation number").toInt())+" rotations");
-    int rightMargin=0;
-    for(auto& legend:legends){
-        rightMargin=std::max(rightMargin,fm.horizontalAdvance(legend));
-    }
-    rightMargin+=30;
-    double topMargin=30;
-    for(auto& legend:legends){
-        painter->drawText(QPointF(width-rightMargin, topMargin), legend);
-        topMargin+=fm.height();
+
+    int position=m_settings->getActiveData("Equation position").toInt();
+    int horizontalMargin=0;
+    int verticalMargin=30;
+    switch(position)
+    {
+
+
+
+    case 0:
+        for(auto& legend:legends){
+            horizontalMargin=std::max(horizontalMargin,fm.horizontalAdvance(legend));
+        }
+        horizontalMargin+=30;
+        for(auto& legend:legends){
+            painter->drawText(QPointF(width-horizontalMargin, height-verticalMargin), legend);
+            verticalMargin+=fm.height();
+        }
+        break;
+    case 1:
+        for(auto& legend:legends){
+            horizontalMargin=std::max(horizontalMargin,fm.horizontalAdvance(legend));
+        }
+        horizontalMargin+=30;
+        for(auto& legend:legends){
+            painter->drawText(QPointF(width-horizontalMargin, verticalMargin), legend);
+            verticalMargin+=fm.height();
+        }
+        break;
+    case 2:
+        horizontalMargin=30;
+        for(auto& legend:legends){
+            painter->drawText(QPointF(horizontalMargin, height-verticalMargin), legend);
+            verticalMargin+=fm.height();
+        }
+        break;
+
+    default:
+        horizontalMargin=30;
+        for(auto& legend:legends){
+            painter->drawText(QPointF(horizontalMargin, verticalMargin), legend);
+            verticalMargin+=fm.height();
+        }
+        break;
     }
 }

@@ -41,19 +41,31 @@ protected:
 };
 
 
+class ListOfGenerator:public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QList<QObject*> generators READ generators)
+public:
+    ListOfGenerator(QList<QObject*> generator);
+    QList<QObject*> generators(){return m_generators;}
+private:
+    QList<QObject*> m_generators;
+};
+
 class MetaGenerator : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
 public:
   //  MetaPainter(QObject *parent=nullptr) {QObject(parent);}
+    MetaGenerator(QObject *parent=nullptr):QObject(parent){};
     virtual const QString name(){return "Meta painter";}
     ~MetaGenerator(){release();}
-    Q_INVOKABLE QQuickPaintedItem* item() {return m_item;}
+    Q_INVOKABLE QQuickPaintedItem* item() {return m_item.get();}
     Q_INVOKABLE virtual void init(){};
-    Q_INVOKABLE virtual void release(){if(m_item!=nullptr){delete m_item;m_item=nullptr;};}
+    Q_INVOKABLE virtual void release(){m_item.reset();}
 protected:
-    WallpaperGenerator* m_item;
+    std::unique_ptr<WallpaperGenerator> m_item;
 };
 
 #endif // WALLPAPERGENERATOR_H

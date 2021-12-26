@@ -93,5 +93,6 @@
         <file>ExamplesView.qml</file>
         <file>SettingsView.qml</file>
         <file>ItemView/Items/AnimationButton.qml</file>
+        <file>ItemView/Items/ActionButton.qml</file>
     </qresource>
 </RCC>
