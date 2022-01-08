@@ -58,8 +58,11 @@ StandardItemModel* ParametricEquationsShapeGeneratorSettings::setupSpecificSecti
 {
     StandardItemModel* model=new StandardItemModel("Transformations");
     model->appendRow(new StandardItem(QObject::tr("Scale"),20,"BoundNumberField.qml",0,QObject::tr("Scaling"),QObject::tr(""),0,100));
-    model->appendRow(new StandardItem(QObject::tr("Rotation number"),4,"SliderInt.qml",0,QObject::tr("Number of rotation"),QObject::tr(""),1,10));
-    model->appendRow(new StandardItem(QObject::tr("Angle"),0,"BoundNumberField.qml",0,QObject::tr("Angle of figure"),QObject::tr("degrees"),0,360));
+    model->appendRow(new StandardItem(QObject::tr("Rotation number"),4,"BoundIntNumberField.qml",0,QObject::tr("Number of rotation"),QObject::tr(""),1,100));
+    model->appendRow(new StandardItem(QObject::tr("Angle"),0,"BoundNumberField.qml",0,QObject::tr("Angle of figure"),QObject::tr("degrees"),-360,360));
+     model->appendRow(new StandardItem(QObject::tr("Horizontal symetry"),0,"CheckBox.qml",0,QObject::tr("Horizontal symetry?")));
+     model->appendRow(new StandardItem(QObject::tr("Symetry position x"),0,"BoundNumberField.qml",0,QObject::tr("Verical symetry position"),"",0,1));
+     model->appendRow(new StandardItem(QObject::tr("Vertical symetry"),0,"CheckBox.qml",0,QObject::tr("Horizontal symetry?")));
     return model;
 }
 
@@ -224,6 +227,47 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
         painter->rotate(angleStep);
 
         painter->drawPolyline(polygon);
+    }
+    painter->resetTransform();
+    painter->translate(m_settings->getActiveData("Start position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
+    painter->rotate(m_settings->getActiveData("Angle").toDouble());
+    angle=0;
+    angleStep=-angleStep;
+    if(m_settings->getActiveData("Horizontal symetry").toBool()){
+        painter->scale(1,-1);
+        while(angle>-180)
+        {
+            if(m_settings->colorful()){
+                pen.setColor(QColor::fromHsvF(fmod(h+i*0.1,1.0f),s,v));
+                painter->setPen(pen);
+                ++i;
+            }
+            angle+=angleStep;
+            painter->rotate(angleStep);
+
+            painter->drawPolyline(polygon);
+        }
+    }
+    painter->resetTransform();
+    painter->translate(m_settings->getActiveData("Start position x").toDouble()*width+m_settings->getActiveData("Symetry position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
+    painter->rotate(m_settings->getActiveData("Angle").toDouble());
+
+    angle=0;
+
+    if(m_settings->getActiveData("Vertical symetry").toBool()){
+        painter->scale(1,-1);
+        while(angle>-180)
+        {
+            if(m_settings->colorful()){
+                pen.setColor(QColor::fromHsvF(fmod(h+i*0.1,1.0f),s,v));
+                painter->setPen(pen);
+                ++i;
+            }
+            angle+=angleStep;
+            painter->rotate(angleStep);
+
+            painter->drawPolyline(polygon);
+        }
     }
 }
 

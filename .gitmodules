@@ -13,3 +13,6 @@
 [submodule "muparser"]
 	path = muparser
 	url = https://github.com/beltoforion/muparser
+[submodule "ImageComposer"]
+	path = ImageComposer
+	url = git@github.com:Melivor/ImageComposer.git

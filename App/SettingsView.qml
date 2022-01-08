@@ -72,10 +72,18 @@ Rectangle{
 
     Button{
         id:saveButton
-        anchors.bottom: exportButton.top
+        anchors.bottom: exportAsCompositionButton.top
         width: parent.width
         text:"Save"
         onClicked:saveDialog.open()
+    }
+
+    Button{
+        id:exportAsCompositionButton
+        anchors.bottom: exportButton.top
+        width: parent.width
+        text:"Export collection"
+        onClicked:exportAsCompositionDialog.open()
     }
 
     Button{

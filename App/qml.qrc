@@ -94,5 +94,6 @@
         <file>SettingsView.qml</file>
         <file>ItemView/Items/AnimationButton.qml</file>
         <file>ItemView/Items/ActionButton.qml</file>
+        <file>SaveCollectionDialog.qml</file>
     </qresource>
 </RCC>

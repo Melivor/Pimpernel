@@ -3,13 +3,11 @@
 #include <QPainter>
 #include <QDir>
 #include <QSvgGenerator>
-
 WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* prototype, QObject* parent):StandardItemModelExplorer(prototype, parent)
 {
 
     getModelList();
     if(rowCount()<2){
-        //qDebug()<<__PRETTY_FUNCTION__<<": is empty!";
         QDir dir(":/Examples/"+activeModel()->root());
         QStringList strList=dir.entryList();
         for(const auto &str:strList){
@@ -20,9 +18,14 @@ WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* protot
         getModelList();
 
     }
+    else if(!m_modelNames.contains(activeModel()->root())){
+        const auto rootName=activeModel()->root()+".xml";
+        const auto rootFileName=":/Examples/"+activeModel()->root()+"/"+rootName;
+        qDebug()<<rootFileName;
+        QFile::copy(rootFileName, path()+rootName);
+    }
     setActiveSelection(activeModel()->root());
 }
-
 
 StandardItemModel* WallpaperGeneratorSettings::setupStandardSection()
 {
@@ -64,6 +67,7 @@ void WallpaperGenerator::save(const QString& name)
 void WallpaperGenerator::saveAsPicture(QUrl url, int width, int height)
 {
     QFileInfo fileInfo(url.toLocalFile());
+
     if(fileInfo.suffix()=="png"){
         saveAsPng(url, width, height);
     }
@@ -74,7 +78,6 @@ void WallpaperGenerator::saveAsPicture(QUrl url, int width, int height)
 }
 void WallpaperGenerator::saveAsPng(QUrl url, int width, int height)
 {
-
     QImage image(width, height, QImage::Format_ARGB32);
     image.fill(QColor(m_settings->backgroundColor()));
 
@@ -113,6 +116,50 @@ void WallpaperGenerator::saveAsSvg(QUrl url, int width, int height)
     painter.end();
 }
 
+void WallpaperGenerator::exportCollection(const QUrl &folderPath, int width, int height)
+{
+       connect(this, &WallpaperGenerator::saveCollectionStepDone, this, &WallpaperGenerator::saveCollectionStep);
+       connect(this, &WallpaperGenerator::saveCollectionDone, this, &WallpaperGenerator::finishingSaveCollection);
+       saveCollectionStep(0, folderPath.toLocalFile(), width, height);
+}
+
+void WallpaperGenerator::saveCollectionStep(int index, const QString& path, int width, int height)
+{
+
+    if(index>=m_settings->rowCount()){
+        emit saveCollectionDone();
+        return;
+    }
+    const QString name=m_settings->data(m_settings->index(index)).toString();
+
+    m_settings->copyProfilSettings(index, false);
+    auto subFolders=name.split(" - ");
+    if(subFolders.size()>1){
+        const auto imagePath=path+"/"+subFolders[0]+"/"+subFolders[1]+".png";
+        QDir dir(path);
+        dir.mkdir(subFolders[0]);
+        saveAsPicture(QUrl::fromLocalFile(imagePath),width,height);
+    }
+    else{
+        const auto imagePath=path+"/"+m_settings->data(m_settings->index(index)).toString()+".png";
+        saveAsPicture(QUrl::fromLocalFile(imagePath),width,height);
+    }
+    m_progress+=1;
+    setSaveCollectionMessage(m_settings->data(m_settings->index(index)).toString());
+    emit saveCollectionStepDone(index+1, path, width, height);
+}
+
+void WallpaperGenerator::setSaveCollectionMessage(const QString &currentFile)
+{
+    m_message="Processing "+currentFile;
+}
+void WallpaperGenerator::finishingSaveCollection()
+{
+    disconnect(this, &WallpaperGenerator::saveCollectionStepDone, this, &WallpaperGenerator::saveCollectionStep);
+    disconnect(this, &WallpaperGenerator::saveCollectionDone, this, &WallpaperGenerator::finishingSaveCollection);
+
+
+}
 ListOfGenerator::ListOfGenerator(QList<QObject*> generator)
 {
     m_generators=generator;

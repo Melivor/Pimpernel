@@ -170,10 +170,14 @@ ApplicationWindow {
         //property alias currentIndex: painterChoice.currentIndex
         property alias pngWidth: exportSettings.pngWidth
         property alias pngHeight: exportSettings.pngHeight
+        property alias composerWidth: exportAsCompositionSettings.pngWidth
+        property alias composerHeight: exportAsCompositionSettings.pngHeight
         property alias name: saveDialog.name
         property alias settingsViewWidth: rect.unfoldWidth
         property alias palette: mainWindow.palette
         property alias darkTheme: mainWindow.darkTheme
+        property alias folderComp: exportAsCompositionDialog.folder
+         property alias scheme: exportAsCompositionSchemeDialog.folder
         //property alias accentColor: HorusTheme.accentColor
         // property alias name: value
     }
@@ -199,10 +203,45 @@ ApplicationWindow {
             close()
         }
     }
+    SaveCollectionDialog{
+        id:saveCollectionDialog
+        wallpaperPainter: loader.item
+    }
+
+    ExportDialog{
+        id:exportAsCompositionDialog
+        title: qsTr("Please choose the export folder")
+        onAccepted:{
+             exportAsCompositionSettings.open()
+
+            close()
+        }
+        selectFolder: true
+    }
+    ExportDialog{
+        id:exportAsCompositionSchemeDialog
+        nameFilters: ["Svg files (*.svg)" ]
+        onAccepted:{
+            exportAsCompositionSettings.open()
+            close()
+        }
+        selectExisting: true
+       title: qsTr("Please choose the scheme file")
+    }
     ExportSettingsDialog{
         id:exportSettings
         onAccepted: {
             loader.item.saveAsPicture(exportDialog.fileUrl, pngWidth, pngHeight)
+            close()
+        }
+    }
+
+    ExportSettingsDialog{
+        id:exportAsCompositionSettings
+        onAccepted: {
+            loader.item.exportCollection(exportAsCompositionDialog.fileUrl, pngWidth, pngHeight)
+            saveCollectionDialog.open()
+           // loader.item.saveAsComposition(exportAsCompositionSchemeDialog.fileUrl,exportAsCompositionDialog.fileUrl, pngWidth, pngHeight)
             close()
         }
     }

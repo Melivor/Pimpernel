@@ -25,6 +25,8 @@ class WallpaperGenerator : public QQuickPaintedItem
     Q_OBJECT
     QML_ELEMENT
     Q_PROPERTY(StandardItemModelExplorer* settings READ settings CONSTANT)
+    Q_PROPERTY(int progress READ progress NOTIFY saveCollectionStepDone)
+    Q_PROPERTY(QString message READ message NOTIFY saveCollectionStepDone)
 public:
     WallpaperGenerator(QQuickItem *parent);
     virtual void paint(QPainter* painter, double width, double height)=0;
@@ -35,9 +37,21 @@ public:
     Q_INVOKABLE void saveAsPng(QUrl url, int width=1920, int height=1080);
     Q_INVOKABLE void saveAsSvg(QUrl url, int width=1920, int height=1080);
     Q_INVOKABLE void save(const QString& name);
+    Q_INVOKABLE void exportCollection(const QUrl& folderPath, int width=1920, int height=1080);
     Q_INVOKABLE QUrl pngPath(QString name){QString path=m_settings->path(); path+=name; path+=".png";QUrl url =QUrl::fromLocalFile(path); return url;}
+    void saveCollectionStep(int index, const QString &path, int width=1920, int height=1080);
+    void finishingSaveCollection();
+    int progress(){return m_progress;}
+    QString message(){return m_message;}
 protected:
     WallpaperGeneratorSettings* m_settings;
+    int m_progress=0;
+    QString m_message="";
+    void setSaveCollectionMessage(const QString& currentFile);
+signals:
+    void saveCollectionStepDone(int step, const QString &path, int width, int height);
+    void saveCollectionDone();
+
 };
 
 

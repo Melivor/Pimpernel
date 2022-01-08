@@ -31,6 +31,14 @@ void ParametricEquationAnimator::setParameters()
     p->setData(0, ToRole);
     appendRow(p);
 
+    pName=QObject::tr("Pt number");
+    p=new StandardItem(pName, 0,"",0,tr(""));
+    p->setData(m_pESGenerator->getActiveData(pName, StandardItemModel::MinRole), StandardItemModel::MinRole);
+    p->setData(m_pESGenerator->getActiveData(pName, StandardItemModel::MaxRole), StandardItemModel::MaxRole);
+    p->setData(0, FromRole);
+    p->setData(0, ToRole);
+    appendRow(p);
+
     pName=QObject::tr("Scale");
     p=new StandardItem(pName, 0,"",0,tr(""));
     p->setData(m_pESGenerator->getActiveData(pName, StandardItemModel::MinRole), StandardItemModel::MinRole);

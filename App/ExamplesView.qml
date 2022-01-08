@@ -29,7 +29,6 @@ Rectangle{
             implicitHeight: 150
             implicitWidth: visible?250:0
             enabled: visible
-
             visible: display!==loader.item.settings.activeModel.root // && loader.item.settings.activeModel.name!==display
             Image{
                 id:image
@@ -39,13 +38,10 @@ Rectangle{
             }
 
             Text{
+                id:nameDisplay
                 anchors.centerIn: parent
                 text:display
-                //                    Component.onCompleted: {
-                //                        var str=loader.item.pngPath(display)
-                //                        console.log("Data: ",str, loader.item.settings.activeModel.root)
-                //                        image.source=str
-                //                    }
+                color:"black"
             }
             MouseArea{
                 anchors.fill:parent
@@ -53,7 +49,10 @@ Rectangle{
                 Menu {
                     id: contextMenuObject
                     MenuItem { text: qsTr("Delete")
-                        onTriggered: loader.item.settings.deleteProfilSettings(display)
+                        onTriggered: {
+                            console.log("Request delete", display,nameDisplay.text)
+                            loader.item.settings.deleteProfilSettings(nameDisplay.text)
+                        }
                     }
                 }
                 onClicked: {

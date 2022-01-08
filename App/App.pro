@@ -1,7 +1,9 @@
 QT += quick \
     widgets \
     quickcontrols2 \
-    svg
+    svg \
+    xml
+
 
 RC_ICONS = icon.ico
 CONFIG += c++17
