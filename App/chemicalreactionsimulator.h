@@ -43,6 +43,7 @@ public:
     virtual void paint(QPainter* painter, double width, double height) override{};
     void increment();
     void initConcentrations();
+    WallpaperGenerator* copy() override;
 private:
 
 

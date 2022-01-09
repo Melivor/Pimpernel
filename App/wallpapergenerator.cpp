@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QDir>
 #include <QSvgGenerator>
+#include <wallpapercollectionexporter.h>
 WallpaperGeneratorSettings::WallpaperGeneratorSettings(StandardItemModel* prototype, QObject* parent):StandardItemModelExplorer(prototype, parent)
 {
 
@@ -45,7 +46,11 @@ WallpaperGenerator::WallpaperGenerator(QQuickItem* parent) : QQuickPaintedItem(p
 
 }
 
-
+WallpaperGenerator::~WallpaperGenerator()
+{
+    qDebug()<<__PRETTY_FUNCTION__<<": "<<m_settings->activeSelectionName();
+    //m_settings->activeModel()->saveAsXml();
+}
 void WallpaperGenerator::paint(QPainter *painter)
 {
     paint(painter, width(), height());
@@ -118,11 +123,28 @@ void WallpaperGenerator::saveAsSvg(QUrl url, int width, int height)
 
 void WallpaperGenerator::exportCollection(const QUrl &folderPath, int width, int height)
 {
+
+    auto copiedInstance=this->copy();
+    WallpaperCollectionExporter* exporter=new WallpaperCollectionExporter(copiedInstance, folderPath.toLocalFile(), width, height);
+    setProgress(0);
+    setMaxProgress(m_settings->rowCount());
+    //copiedInstance->setParent(exporter);
+    //connect(exporter, &WallpaperCollectionExporter::exportDone, this, &MyObject::handleResults);
+    connect(exporter, &WallpaperCollectionExporter::progressChanged, this, &WallpaperGenerator::setProgress);
+    connect(exporter, &WallpaperCollectionExporter::messageChanged, this, &WallpaperGenerator::setMessage);
+        connect(exporter, &WallpaperCollectionExporter::finished, exporter, &QObject::deleteLater);
+        connect(exporter, &WallpaperCollectionExporter::finished, copiedInstance, &QObject::deleteLater);
+         connect(exporter, &WallpaperCollectionExporter::finished, this, &WallpaperGenerator::done);
+
+       exporter->start();
+    /*
        connect(this, &WallpaperGenerator::saveCollectionStepDone, this, &WallpaperGenerator::saveCollectionStep);
        connect(this, &WallpaperGenerator::saveCollectionDone, this, &WallpaperGenerator::finishingSaveCollection);
        saveCollectionStep(0, folderPath.toLocalFile(), width, height);
+       */
 }
 
+/*
 void WallpaperGenerator::saveCollectionStep(int index, const QString& path, int width, int height)
 {
 
@@ -160,6 +182,7 @@ void WallpaperGenerator::finishingSaveCollection()
 
 
 }
+*/
 ListOfGenerator::ListOfGenerator(QList<QObject*> generator)
 {
     m_generators=generator;

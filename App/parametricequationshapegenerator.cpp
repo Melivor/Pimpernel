@@ -8,7 +8,6 @@
 #include <QElapsedTimer>
 #include <standarditemwithactions.h>
 
-
 ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSettings(QObject* parent) : WallpaperGeneratorSettings(setupPrototype(), parent)
 {
     m_xEquation.defineVar("t", &m_t);
@@ -24,9 +23,12 @@ ParametricEquationsShapeGeneratorSettings::ParametricEquationsShapeGeneratorSett
     }
     connect(this, &StandardItemModelExplorer::activeSelectionChanged, this, &ParametricEquationsShapeGeneratorSettings::resetAnimator);
     m_animator.reset(new ParametricEquationAnimator(this));
-    //resetAnimator();
 }
 
+ParametricEquationsShapeGeneratorSettings::~ParametricEquationsShapeGeneratorSettings()
+{
+
+}
 void ParametricEquationsShapeGeneratorSettings::resetAnimator()
 {
     m_animator->setParameters();
@@ -165,7 +167,14 @@ ParametricEquationsShapeGenerator::ParametricEquationsShapeGenerator(QQuickItem 
     connect(m_settings->activeModel()->sections()[1],&StandardItemModel::dataChanged, this, &ParametricEquationsShapeGenerator::redraw);
     connect(m_settings->activeModel()->sections()[2],&StandardItemModel::dataChanged, this, &ParametricEquationsShapeGenerator::redraw);
     connect(m_settings->activeModel()->sections()[3],&StandardItemModel::dataChanged, this, &ParametricEquationsShapeGenerator::redraw);
+}
 
+WallpaperGenerator* ParametricEquationsShapeGenerator::copy()
+{
+    auto copy=new ParametricEquationsShapeGenerator();
+    copy->setWidth(this->width());
+    copy->setHeight(this->height());
+    return copy;
 }
 
 void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, double height)
@@ -228,9 +237,12 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
 
         painter->drawPolyline(polygon);
     }
-    painter->resetTransform();
-    painter->translate(m_settings->getActiveData("Start position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
-    painter->rotate(m_settings->getActiveData("Angle").toDouble());
+    //auto transformation=painter->worldTransform();
+    //transformation.m31();
+    //painter->resetTransform();
+    //painter->translate(m_settings->getActiveData("Start position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
+    painter->rotate(-angle);
+    //painter->rotate(m_settings->getActiveData("Angle").toDouble());
     angle=0;
     angleStep=-angleStep;
     if(m_settings->getActiveData("Horizontal symetry").toBool()){
@@ -247,10 +259,13 @@ void ParametricEquationsShapeGenerator::paint(QPainter *painter, double width, d
 
             painter->drawPolyline(polygon);
         }
+        painter->rotate(-angle);
+        painter->scale(1,-1);
+
     }
-    painter->resetTransform();
-    painter->translate(m_settings->getActiveData("Start position x").toDouble()*width+m_settings->getActiveData("Symetry position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
-    painter->rotate(m_settings->getActiveData("Angle").toDouble());
+    //painter->resetTransform();
+    //painter->translate(m_settings->getActiveData("Start position x").toDouble()*width+m_settings->getActiveData("Symetry position x").toDouble()*width, m_settings->getActiveData("Start position y").toDouble()*height);
+    //painter->rotate(m_settings->getActiveData("Angle").toDouble());
 
     angle=0;
 

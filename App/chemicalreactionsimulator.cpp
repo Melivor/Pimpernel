@@ -163,6 +163,14 @@ ChemicalReactionSimulator::ChemicalReactionSimulator(QQuickItem *parent):Wallpap
     m_settings=settings;
 }
 
+WallpaperGenerator* ChemicalReactionSimulator::copy()
+{
+    auto copy=new ChemicalReactionSimulator();
+    copy->setWidth(this->width());
+    copy->setHeight(this->height());
+    return copy;
+}
+
 void ChemicalReactionSimulator::initConcentrations()
 {
 //   / m_grids

@@ -2,6 +2,7 @@
 #define WALLPAPERGENERATOR_H
 #include "standarditemmodelexplorer.h"
 #include "QQuickPaintedItem"
+#include <QThread>
 
 class WallpaperGeneratorSettings : public StandardItemModelExplorer
 {
@@ -25,10 +26,13 @@ class WallpaperGenerator : public QQuickPaintedItem
     Q_OBJECT
     QML_ELEMENT
     Q_PROPERTY(StandardItemModelExplorer* settings READ settings CONSTANT)
-    Q_PROPERTY(int progress READ progress NOTIFY saveCollectionStepDone)
-    Q_PROPERTY(QString message READ message NOTIFY saveCollectionStepDone)
+    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
+    Q_PROPERTY(int maxProgress READ maxProgress NOTIFY maxProgressChanged)
+    Q_PROPERTY(QString message READ message NOTIFY messageChanged)
+    QThread workerThread;
 public:
     WallpaperGenerator(QQuickItem *parent);
+    ~WallpaperGenerator();
     virtual void paint(QPainter* painter, double width, double height)=0;
     void paint(QPainter* painter) override;
     WallpaperGeneratorSettings* settings(){return m_settings;}
@@ -39,18 +43,26 @@ public:
     Q_INVOKABLE void save(const QString& name);
     Q_INVOKABLE void exportCollection(const QUrl& folderPath, int width=1920, int height=1080);
     Q_INVOKABLE QUrl pngPath(QString name){QString path=m_settings->path(); path+=name; path+=".png";QUrl url =QUrl::fromLocalFile(path); return url;}
-    void saveCollectionStep(int index, const QString &path, int width=1920, int height=1080);
-    void finishingSaveCollection();
-    int progress(){return m_progress;}
-    QString message(){return m_message;}
+    //void saveCollectionStep(int index, const QString &path, int width=1920, int height=1080);
+    //void finishingSaveCollection();
+    int progress() const {return m_progress;}
+    int maxProgress() const {return m_maxProgress;}
+    QString message() const {return m_message;}
+    void setProgress(int newProgress){m_progress=newProgress; emit progressChanged();}
+    void setMaxProgress(int newProgress){m_maxProgress=newProgress; emit maxProgressChanged();}
+    void setMessage(QString newMessage){m_message=newMessage; emit messageChanged();}
+    virtual WallpaperGenerator* copy()=0;
 protected:
     WallpaperGeneratorSettings* m_settings;
     int m_progress=0;
+    int m_maxProgress=0;
     QString m_message="";
     void setSaveCollectionMessage(const QString& currentFile);
 signals:
-    void saveCollectionStepDone(int step, const QString &path, int width, int height);
-    void saveCollectionDone();
+    void progressChanged();
+    void maxProgressChanged();
+    void done();
+    void messageChanged();
 
 };
 

@@ -24,6 +24,7 @@ SOURCES += \
     chemicalspecies.cpp \
         main.cpp \
     parametricequationanimator.cpp \
+    wallpapercollectionexporter.cpp \
         wallpapergenerator.cpp \
         parametricequation.cpp \
         parametricequationshapegenerator.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
     chemicalreactionsimulator.h \
     chemicalspecies.h \
     parametricequationanimator.h \
+    wallpapercollectionexporter.h \
     wallpapergenerator.h\
     parametricequation.h \
     parametricequationshapegenerator.h \

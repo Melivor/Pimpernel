@@ -9,6 +9,7 @@ class ParametricEquationsShapeGeneratorSettings : public WallpaperGeneratorSetti
     Q_OBJECT
 public:
     ParametricEquationsShapeGeneratorSettings(QObject* parent=nullptr);
+    ~ParametricEquationsShapeGeneratorSettings();
     StandardItemModel* setupPrototype();
     QPointF pt(double t);
     QString xEquation(){return "x="+m_xEquation.expression();}
@@ -35,6 +36,7 @@ class ParametricEquationsShapeGenerator: public WallpaperGenerator
 public:
     ParametricEquationsShapeGenerator(QQuickItem* parent=nullptr);
     virtual void paint(QPainter* painter, double width, double height) override;
+    WallpaperGenerator* copy() override;
 private:
     void drawLegend(QPainter *painter, double width, double height);
 };
